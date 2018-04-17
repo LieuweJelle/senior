@@ -23,7 +23,7 @@ class AddColumsToUsersTable extends Migration
             $table->integer('telephone')->nullable();
             $table->boolean('enabled')->nullable();
             $table->integer('vol_id')->nullable();
-						$table->integer('role_id')->nullable()->after('id');
+			$table->integer('role_id')->nullable()->after('id');
         });
     }
 
