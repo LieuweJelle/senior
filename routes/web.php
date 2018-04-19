@@ -22,3 +22,6 @@ Route::resource('/users', 'UserController');
 //Route::get('/users/{id}/edit', 'UserController@edit');
 //Route::get('/users/{id}/store', 'UserController@store');
 
+Route::get('/register2', function () {
+    return view('auth.register2');
+});
