@@ -48,7 +48,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-      
+        // ik!
+        $user = User::find($user_id);
+        $user->roles()->attach($role_id); //a new row will be added to role_user table, with $role_id and $user_id values.
+        return view('users.show',['user' => $user, 'roles' => $roles]);
+
     }
 
     /**

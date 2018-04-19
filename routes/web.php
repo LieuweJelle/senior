@@ -9,8 +9,19 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
 
+Route::get('foo', function () { //<pd>foo => hello World
+    return 'Hello World';
+});
+
+Route::get('/frontpages', function () {
+    return view('frontpages.index');
+});
+
+Route::get('/users/{id}/{name}', function ($id, $name) {
+    return 'This is user '.$name.' with an id of '.$id; //http://senior.lar/users/249/LieuweJelle => This is user LieuweJelle with an id of 249
+});
+*/
 Route::get('/', function () {
     return view('welcome');
 });
