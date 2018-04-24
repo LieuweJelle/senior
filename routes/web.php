@@ -36,23 +36,30 @@ Route::get('about', function () {
     return view('about');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/posts', 'PostsController@index');
-Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/posts/create', 'PostsController@create');
-//Route::post('/posts', 'PostsController@store');
+Route::post('/posts', 'PostsController@store');
+Route::get('/posts/{post}', 'PostsController@show');
+Route::post('/posts/{post}/comments', 'CommentsController@store');
 
 Route::resource('/users', 'UserController');
 //Route::post('/users', 'UserController@index');
 //Route::get('/users/{id}/edit', 'UserController@edit');
 //Route::get('/users/{id}/store', 'UserController@store');
+
 Route::resource('/roles', 'RoleController');
 
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+Route::get('/login', 'SessionsController@create');
+Route::get('/logout', 'SessionsController@destroy');
 Route::get('/register2', function () {
     return view('auth.register2');
 });

@@ -1,38 +1,34 @@
-@extends('layouts.master')
+@extends('posts.postmaster')
 
 @section('content')
-
-  <h1>A place to create the post</h1>
-  
-  <form action="/posts">
+  <h1>Create the post</h1>
+  <hr />
+  <form method="POST" action="/posts">
     @csrf
     <div class="form-group">
-      <label for="exampleInputEmail1">Titel</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titel">
+      <label for="title">Titel</label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="Titel">
     </div>
     
-    <div class="form-group">
-      <label for="exampleInputPassword1">Body</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Body">
-    </div>
+    <!--<div class="form-group">
+      <label for="user_id">User id</label>
+      <input type="text" class="form-control" id="user_id">
+    </div>-->
     
     <div class="form-group">
+      <label for="body">Body</label>
+      <textarea class="form-control" id="body" name="body" placeholder="Body"></textarea>
+    </div>
+    
+    <!--<div class="form-group">
       <label for="exampleInputFile">File input</label>
       <input type="file" id="exampleInputFile">
-      <p class="help-block">Example block-level help text here.</p>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
-    </div>
+    </div>-->
     
     <div class="form-group">
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-primary">Add Post</button>
     </div>
-    @include('layouts.errors')
+    @include('layouts.error')
+    
   </form>
-  
-  
 @endsection
