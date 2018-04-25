@@ -1,3 +1,4 @@
+<!-- dit is echt 3 keer nix! -->
 <div class="navbar navbar-dark bg-dark box-shadow">
   <div class="container d-flex justify-content-between">
     <a href="#" class="navbar-brand d-flex align-items-center">
@@ -9,3 +10,7 @@
     </button>
   </div>
 </div>
+<!-- inlognaam in rechter boven hoek -->
+@if(Auth::check())
+  <a class="nav-link ml-auto" href="#">{{ Auth::user()->name }}</a>
+@endif

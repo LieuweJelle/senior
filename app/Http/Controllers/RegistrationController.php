@@ -8,7 +8,7 @@ class RegistrationController extends Controller
 {
     public function create()
     {
-        return view('sessions.create');
+        return view('registration.create');
     }
     
     public function store()
@@ -21,13 +21,15 @@ class RegistrationController extends Controller
         ]);
         
         // Create and save User
-        $user = User::create(request(['name', 'email', 'password']));
+        $user = User::create(
+          request(['name', 'email', 'password'])
+        );
         
         // Sign User in
         auth()->login($user);
         
         // Redirect 
-        return redirect('/users')->with('success', 'User Created');
+        return redirect()->home(); //return redirect('/users')->with('success', 'User Created'); //UC 
         
     }
 }

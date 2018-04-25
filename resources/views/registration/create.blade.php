@@ -1,34 +1,33 @@
-@extends('posts.postmaster')
-{{-- @extends('layouts.master') --}}
+@extends('layouts.master')
 
 @section('content')
   <div class="col-sm-8">
-    <h1>Sign in</h1>
+    <h1>Register</h1>
     
-    <form method="POST" action="/login">
+    <form method="POST" action="/register">
     @csrf
-    <!--<div class="form-group">
+    <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-    </div>-->
+    </div>
 
      <div class="form-group">
-      <label for="email">Email Address:</label>
+      <label for="email">Email</label>
       <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
     </div>
     
     <div class="form-group">
-      <label for="password_conformation">Password:</label>
-      <input type="password" class="form-control" id="password_conformation" name="password_conformation" placeholder="Password" required>
+      <label for="password_confirmation">Password</label>
+      <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Password" required>
     </div>
 
-    <!--<div class="form-group">
-      <label for="password">Password Conformation</label>
+    <div class="form-group">
+      <label for="password">Password Confirmation</label>
       <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-    </div>-->
+    </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-primary">Register</button>
     </div>
     
     @include('layouts.error')

@@ -14,19 +14,15 @@ Route::get('foo', function () { //<pd>foo => hello World
     return 'Hello World';
 });
 
-Route::get('/frontpages', function () {
-    return view('frontpages.index');
-});
-
 Route::get('/users/{id}/{name}', function ($id, $name) {
     return 'This is user '.$name.' with an id of '.$id; //http://senior.lar/users/249/LieuweJelle => This is user LieuweJelle with an id of 249
 });
 */
-Route::get('/', function () { //rechtstreeks zonder Controller
-    //$tasks = ['Watch video', 'Practice', 'Build'];
-    //return view('welcome', compact('tasks'));
-    $tasks = DB::table('tasks')->get();
-    return $tasks;
+Route::get('/', function () { //rechtstreeks zonder Controller. (->name('home'); -izm- return redirect()->home();)
+    $tasks = ['Watch video', 'Practice', 'Build'];
+    return view('welcome', compact('tasks'));
+    //$tasks = DB::table('tasks')->get();
+    //return $tasks; //JSON array
 });
 Route::get('practice', function () {
     return view('practice');
@@ -36,13 +32,14 @@ Route::get('about', function () {
     return view('about');
 });
 
-//Auth::routes();
+Auth::routes();
+
+Route::get('/home', 'HomeController@index'); //->name('home');
 
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+//http://senior.lar/posts?month=April&year=2018 works.
 Route::get('/posts', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
@@ -56,10 +53,12 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/roles', 'RoleController');
 
-Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');
-Route::get('/login', 'SessionsController@create');
-Route::get('/logout', 'SessionsController@destroy');
+/* Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');*/
 Route::get('/register2', function () {
     return view('auth.register2');
 });
+
+/*Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy'); //Ook in browser: senior.lar/logout logd je uit */

@@ -21,7 +21,7 @@
     <div class="card">
       <div class="card-block">
         <form method="POST" action="/posts/{{ $post->id }}">
-          @crsf
+          @csrf
           @method('PATCH')
           <div class="form-group">
             <input type="text" name="title" id="title" placeholder="Titel" class="form-control" required></textarea>
