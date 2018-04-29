@@ -14,13 +14,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-				view()->composer('posts.sidebar', function($view){
+		view()->composer('posts.sidebar', function($view){
           //$view->with('archives', \App\Post::archives()); 
           //$view->with('roles', \App\Role::has('users')->pluck('name'));
           $archives = \App\Post::archives();
           $roles = \App\Role::has('users')->pluck('name');
-          $view->with(compact('archives', 'roles'));
+          $tags = \App\Tag::has('posts')->pluck('name');
+          $view->with(compact('archives', 'roles', 'tags'));
         }); //layouts.sidebar?UC
+
+
         Schema::defaultStringLength(191);
 		}
 

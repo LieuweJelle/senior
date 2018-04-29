@@ -44,12 +44,20 @@ Route::get('/posts', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');
+
+//Route::get('/posts/tags/{tag}', 'PostsController@index'); //indexByTags
+Route::get('/posts/tags/{tag}', 'TagsController@index');
+
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
-Route::resource('/users', 'UserController');
+//Route::resource('/users', 'UserController');
 //Route::post('/users', 'UserController@index');
-//Route::get('/users/{id}/edit', 'UserController@edit');
-//Route::get('/users/{id}/store', 'UserController@store');
+Route::get('/users', 'UserController@index');
+Route::get('/users/create', 'UserController@create');
+Route::get('/users/{id}/edit', 'UserController@edit');
+Route::get('/users/{id}/store', 'UserController@store');
+Route::get('/users/{user}', 'UserController@show');
+
 Route::get('/users/roles/{role}', 'RolesController@index');
 
 //Route::resource('/roles', 'RoleController');

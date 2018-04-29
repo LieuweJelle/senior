@@ -14,6 +14,16 @@
     </ul>
   </div>
   <div class="card">
+    <h3>Tags</h3>
+    <ul class="list-unstyled">
+      @foreach($tags as $tag)
+        <li>
+          <a href="/posts/tags/{{ $tag }}">{{ $tag }}</a>
+        </li>
+      @endforeach
+    </ul>
+  </div>
+  <div class="card">
     <h3>Popular Post</h3>
     <div class="fakeimg">Image</div><br />
     <div class="fakeimg">Image</div><br />

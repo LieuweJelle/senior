@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('auth.register');
     }
 
     /**
@@ -47,7 +47,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'role_id' => 'required',
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
@@ -58,28 +57,25 @@ class UserController extends Controller
             'streetnumber' => 'required',
             'zipcode' => 'required|max:6',
             'place' => 'required',
+            'intro' => nullable(),
        ]);
        
-        $user = new User;
-        $user->role_id = auth()->role()->id; //$request->input('role_id');
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-        $user->firstname = $request->input('firstname');
-        $user->lastname = $request->input('lastname');
-        $user->telephone = $request->input('telephone');
-        $user->street = $request->input('street');
-        $user->streetnumber = $request->input('streetnumber');
-        $user->zipcode = $request->input('zipcode');
-        $user->place = $request->input('place');
+        User::create([
+        //$user->role_id = auth()->role()->id; //$request->input('role_id');
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => request('password'),
+            'firstname' => request('firstname'),
+            'lastname' => request('lastname'),
+            'telephone' => request('telephone'),
+            'street' => request('street'),
+            'streetnumber' => request('streetnumber'),
+            'zipcode' => request('zipcode'),
+            'place' => request('place'),
+            'intro' => request('intro')
+        ]);
         
-        $user->save();
-        
-        // User::create(request(['name', 'email', .....])
-        $role_user = new Role;
-        $role_id = $user->id;
-        
-       return redirect('/users')->with('success', 'User Created');
+        return redirect('/users')->with('success', 'User Created');
     }
 
     /**
@@ -93,7 +89,7 @@ class UserController extends Controller
         //$user = User::find($user->id);
         $roles = Role::all();
         //$user->roles()->attach($id); //a new row will be added to role_user table, with $role_id and $user_id values.
-        return view('users.show',['user' => $user, 'roles' => $roles]);
+        return view('users.show2',['user' => $user, 'roles' => $roles]);
 
     }
 
@@ -107,7 +103,7 @@ class UserController extends Controller
     {
       $user = User::find($id);
       $roles = Role::all();
-      return view('users.edit',['user' => $user, 'roles' => $roles]);
+      return view('users.edit2',['user' => $user, 'roles' => $roles]);
     }
 
     /**
