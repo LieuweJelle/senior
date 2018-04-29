@@ -15,4 +15,9 @@ class Role extends Model
         return $this->belongsToMany(User::class); //'App\User'
     }
     
+    public function getRouteKeyName()
+    {
+        return 'name'; // http: //senior.lar/users/roles/Huishoudelijke hulp
+    }
+    
 }

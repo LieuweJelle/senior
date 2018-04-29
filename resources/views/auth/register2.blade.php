@@ -8,7 +8,31 @@
                 <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/register2">
+                <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    {{ __('Boodschappen') }}
+  </label>
+</div>
+                <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    {{ __('Klusjes') }}
+  </label>
+</div>
+                <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    {{ __('Huishoudelijke hulp') }}
+  </label>
+</div>
+                 <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    {{ __('Op visite gaan') }}
+  </label>
+</div>
+                  <form method="POST" action="/register2">
                         @csrf
                 
                         <div class="form-group row">

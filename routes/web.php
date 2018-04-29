@@ -50,8 +50,9 @@ Route::resource('/users', 'UserController');
 //Route::post('/users', 'UserController@index');
 //Route::get('/users/{id}/edit', 'UserController@edit');
 //Route::get('/users/{id}/store', 'UserController@store');
+Route::get('/users/roles/{role}', 'RolesController@index');
 
-Route::resource('/roles', 'RoleController');
+//Route::resource('/roles', 'RoleController');
 
 /* Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');*/

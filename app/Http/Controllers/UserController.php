@@ -76,7 +76,7 @@ class UserController extends Controller
         $user->save();
         
         // User::create(request(['name', 'email', .....])
-        
+        $role_user = new Role;
         $role_id = $user->id;
         
        return redirect('/users')->with('success', 'User Created');

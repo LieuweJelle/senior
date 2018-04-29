@@ -15,7 +15,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 				view()->composer('posts.sidebar', function($view){
-          $view->with('archives', \App\Post::archives());          
+          //$view->with('archives', \App\Post::archives()); 
+          //$view->with('roles', \App\Role::has('users')->pluck('name'));
+          $archives = \App\Post::archives();
+          $roles = \App\Role::has('users')->pluck('name');
+          $view->with(compact('archives', 'roles'));
         }); //layouts.sidebar?UC
         Schema::defaultStringLength(191);
 		}
