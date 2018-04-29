@@ -18,7 +18,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function addComment($body)
     {
         return $this->comments()->create(compact('body'));
@@ -45,4 +50,5 @@ class Post extends Model
         ->get()
         ->toArray();
     }
+
 }
