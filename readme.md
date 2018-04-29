@@ -1,3 +1,7 @@
+<p align="center">https://lieuwe-jelle.com</p>
+<p align="center">https://lieuwe-jelle.com/users</p>
+<p align="center">https://lieuwe-jelle.com/posts</p>
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
