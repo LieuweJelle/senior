@@ -57,7 +57,7 @@ class UserController extends Controller
             'streetnumber' => 'required',
             'zipcode' => 'required|max:6',
             'place' => 'required',
-            'intro' => nullable(),
+            'intro' => 'required',
        ]);
        
         User::create([
@@ -72,7 +72,7 @@ class UserController extends Controller
             'streetnumber' => request('streetnumber'),
             'zipcode' => request('zipcode'),
             'place' => request('place'),
-            'intro' => request('intro')
+            'intro' => request('intro'),
         ]);
         
         return redirect('/users')->with('success', 'User Created');

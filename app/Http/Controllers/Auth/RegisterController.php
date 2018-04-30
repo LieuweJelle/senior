@@ -61,6 +61,7 @@ class RegisterController extends Controller
             'streetnumber' => 'required|string|max:255',
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
+            'intro' => 'required|string',
         ]);
     }
 
@@ -72,6 +73,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        /*for($i=0; $i<=$data['defaultCheck'.$i]; $i++) {
+            Role::create([
+                'name' => $data['defaultCheck'.$i],
+            ]);
+        }*/
         return User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
@@ -83,6 +89,7 @@ class RegisterController extends Controller
             'streetnumber' => $data['streetnumber'],
             'zipcode' => $data['zipcode'],
             'place' => $data['place'],
+            'intro' => $data['intro'],
         ]);
          
     }

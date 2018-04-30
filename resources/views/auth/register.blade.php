@@ -183,10 +183,9 @@
                     <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
                     
                         <div class="form-group"><br />
-                            <textarea rows="4" cols="10" class="form-control{{ $errors->has('viou') ? ' is-invalid' : '' }} ta" name="viou" value="{{ old('viou') }}" required autofocus></textarea>
+                            <textarea rows="4" cols="10" class="form-control{{ $errors->has('intro') ? ' is-invalid' : '' }} ta" name="intro" value="{{ old('intro') }}" required autofocus></textarea>
                         </div>
- 
-                        
+                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
