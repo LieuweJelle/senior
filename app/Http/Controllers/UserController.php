@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('users.create');
     }
 
     /**
@@ -47,7 +48,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            /*'name' => 'required',
             'email' => 'required',
             'password' => 'required',
             'firstname' => 'required',
@@ -57,14 +58,25 @@ class UserController extends Controller
             'streetnumber' => 'required',
             'zipcode' => 'required|max:6',
             'place' => 'required',
-            'intro' => 'nullable',
+            'intro' => 'nullable',*/
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'telephone' => 'required|string|max:10',
+            'password' => 'required|string|min:6|confirmed',
+            'street' => 'required|string|max:255',
+            'streetnumber' => 'required|string|max:255',
+            'zipcode' => 'required|string|max:6',
+            'place' => 'required|string|max:255',
+            'intro' => 'string|nullable',
         ]);
        
-        User::create([
+        $user = User::create([
         //$user->role_id = auth()->role()->id; //$request->input('role_id');
             'name' => request('name'),
             'email' => request('email'),
-            'password' => request('password'),
+            'password' => Hash::make(request('password')),
             'firstname' => request('firstname'),
             'lastname' => request('lastname'),
             'telephone' => request('telephone'),
@@ -74,8 +86,15 @@ class UserController extends Controller
             'place' => request('place'),
             'intro' => request('intro'),
         ]);
-        
-        return redirect('/users')->with('success', 'User Created');
+        if(!empty($request['check_list'])) {
+            $user = User::find($user->id);
+            foreach($request['check_list'] as $selected) {
+                $user->roles()->attach($selected); 
+            }
+        }
+        //return $user;
+
+        return redirect()->action('UserController@index');
     }
 
     /**
@@ -102,8 +121,9 @@ class UserController extends Controller
     public function edit($id)
     {
       $user = User::find($id);
+      //$user->roles();
       $roles = Role::all();
-      return view('users.edit2',['user' => $user, 'roles' => $roles]);
+      return view('users.edit',['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -119,7 +139,7 @@ class UserController extends Controller
             //'role_id' => 'required',
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            //'password' => 'required',
             'firstname' => 'required',
             'lastname' => 'required',
             'telephone' => 'required',
@@ -127,11 +147,8 @@ class UserController extends Controller
             'streetnumber' => 'required',
             'zipcode' => 'required',
             'place' => 'required',
+            'intro' => 'nullable',
         ]);
-        
-        //if() {
-          
-        //} else {
         $user->update($request->all());
   
         /*$user = User::find($user->id);
@@ -149,8 +166,17 @@ class UserController extends Controller
         $user->save();*/
         
         //}
+        // 3 regels code, 3 dagen werk
+        // remember_token slaat pas op na uitloggen.
+        // intro slaat niet op!! ??
+        $user->roles()->detach();
+        if(!empty($request['check_list'])) {
+           //$user = User::find($user->id);
+            foreach($request['check_list'] as $selected) {
+                $user->roles()->attach($selected); 
+            }
+        }
 
-      //$user->update($request->all());
         return redirect()->route('users.index'); //->with('success', 'Post Updated');
     }
 

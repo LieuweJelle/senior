@@ -16,7 +16,7 @@
                             <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ $user->firstname }}" required autofocus disabled>
+                                <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ $user->firstname }}" disabled>
 
                                 @if ($errors->has('firstname'))
                                     <span class="invalid-feedback">
@@ -30,7 +30,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ $user->lastname }}" required autofocus disabled>
+                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ $user->lastname }}" disabled>
 
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback">
@@ -44,7 +44,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gebruikersnaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus disabled>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" disabled>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -58,7 +58,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required disabled>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" disabled>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -72,7 +72,7 @@
                             <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoon') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephone" type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" value="{{ $user->telephone }}" required disabled>
+                                <input id="telephone" type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" value="{{ $user->telephone }}" disabled>
 
                                 @if ($errors->has('telephone'))
                                     <span class="invalid-feedback">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!--<div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wachtwoord') }}</label>
 
                             <div class="col-md-6">
@@ -102,7 +102,7 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required disabled>
                             </div>
-                        </div>
+                        </div>-->
                         
                         <br />
                         
@@ -110,7 +110,7 @@
                             <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ $user->street }}" required autofocus disabled>
+                                <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ $user->street }}" disabled>
 
                                 @if ($errors->has('street'))
                                     <span class="invalid-feedback">
@@ -124,7 +124,7 @@
                             <label for="streetnumber" class="col-md-4 col-form-label text-md-right">{{ __('Straatnummer') }}</label>
 
                             <div class="col-md-6">
-                                <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ $user->streetnumber }}" required autofocus disabled>
+                                <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ $user->streetnumber }}" disabled>
 
                                 @if ($errors->has('streetnumber'))
                                     <span class="invalid-feedback">
@@ -138,7 +138,7 @@
                             <label for="zipcode" class="col-md-4 col-form-label text-md-right">{{ __('Postcode') }}</label>
 
                             <div class="col-md-6">
-                                <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ $user->zipcode }}" required autofocus disabled>
+                                <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ $user->zipcode }}" disabled>
 
                                 @if ($errors->has('zipcode'))
                                     <span class="invalid-feedback">
@@ -152,7 +152,7 @@
                             <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Woonplaats') }}</label>
 
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ $user->place }}" required autofocus disabled>
+                                <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ $user->place }}" disabled>
 
                                 @if ($errors->has('place'))
                                     <span class="invalid-feedback">
@@ -171,7 +171,7 @@
                     <div class="card-body">
                         @foreach($roles as $role)
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" disabled>
+                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" disabled  {{($user->roles->contains($role->id)) ? "checked" : ""}}>
                             <label class="form-check-label" for="defaultCheck{{ $role->id }}">
                               {{ __($role->name) }}
                             </label>
@@ -183,7 +183,7 @@
                     <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
                     
                         <div class="form-group"><br />
-                            <textarea rows="4" cols="10" class="form-control{{ $errors->has('viou') ? ' is-invalid' : '' }} ta" name="viou" value="{{ $user->viou }}" required autofocus disabled></textarea>
+                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro" disabled>{{ $user->intro }}</textarea>
                         </div>
  
                         

@@ -14,6 +14,7 @@
             <td>S-nr</td>
             <td>Zipcode</td>
             <td>Place</td>
+            <td>Intro</td>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
             <td>{{ $user->streetnumber }}</td>
             <td>{{ $user->zipcode }}</td>
             <td>{{ $user->place }}</td>
+            <td>{{ $user->intro }}</td>
 
             <td>
 
