@@ -171,7 +171,7 @@
                         <?php $roles = \App\Role::all(); ?>
                         @foreach($roles as $role)
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}">
+                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" name="check_list[]">
                             <label class="form-check-label" for="defaultCheck{{ $role->id }}">
                               {{ __($role->name) }}
                             </label>
@@ -183,7 +183,7 @@
                     <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
                     
                         <div class="form-group"><br />
-                            <textarea rows="4" cols="10" class="form-control{{ $errors->has('intro') ? ' is-invalid' : '' }} ta" name="intro" value="{{ old('intro') }}" required autofocus></textarea>
+                            <textarea rows="4" cols="10" class="form-control{{ $errors->has('intro') ? ' is-invalid' : '' }} ta" name="intro" id="intro" value="{{ old('intro') }}" required autofocus></textarea>
                         </div>
                          
                         <div class="form-group row mb-0">

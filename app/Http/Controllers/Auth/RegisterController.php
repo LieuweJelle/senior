@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'streetnumber' => 'required|string|max:255',
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
-            'intro' => 'required|string',
+            'intro' => 'string|nullable',
         ]);
     }
 
@@ -73,24 +73,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        /*for($i=0; $i<=$data['defaultCheck'.$i]; $i++) {
-            Role::create([
-                'name' => $data['defaultCheck'.$i],
-            ]);
-        }*/
-        return User::create([
+        $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'name' => $data['name'],
             'email' => $data['email'],
             'telephone' => $data['telephone'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password']), //bcrypt()
             'street' => $data['street'],
             'streetnumber' => $data['streetnumber'],
             'zipcode' => $data['zipcode'],
             'place' => $data['place'],
             'intro' => $data['intro'],
         ]);
-         
+        // 3 regels code, 3 dagen werk
+        // remember_token slaat pas op na uitloggen.
+        // intro slaat niet op!! ??
+        if(!empty($data['check_list'])) {
+            $user = User::find($user->id);
+            foreach($data['check_list'] as $selected) {
+                $user->roles()->attach($selected); 
+            }
+        }
+        return $user;
     }
 }

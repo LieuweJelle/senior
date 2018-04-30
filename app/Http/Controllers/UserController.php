@@ -57,8 +57,8 @@ class UserController extends Controller
             'streetnumber' => 'required',
             'zipcode' => 'required|max:6',
             'place' => 'required',
-            'intro' => 'required',
-       ]);
+            'intro' => 'nullable',
+        ]);
        
         User::create([
         //$user->role_id = auth()->role()->id; //$request->input('role_id');
@@ -116,7 +116,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'role_id' => 'required',
+            //'role_id' => 'required',
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
