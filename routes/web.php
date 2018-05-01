@@ -32,6 +32,14 @@ Route::get('about', function () {
     return view('about');
 });
 
+Route::get('senior', function () {
+    return view('senior');
+});
+
+Route::get('social', function () {
+    return view('social');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index'); //->name('home');
