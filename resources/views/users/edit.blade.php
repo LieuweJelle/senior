@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.update', [ 'id' => $user->id ]) }}">
                         @csrf
-                        @method('PATCH')
+                        @method('PUT')
 
                         <div class="form-group row">
                             <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam') }}</label>
@@ -160,32 +160,28 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div><br />
 
- 
-<br />
-                
-                <div class="card">
-                    <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
-                    
-                    <div class="card-body">
-                        @foreach($roles as $role)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" name="check_list[]" {{($user->roles->contains($role->id)) ? "checked" : ""}}>
-                            <label class="form-check-label" for="defaultCheck{{ $role->id }}">
-                              {{ __($role->name) }}
-                            </label>
-                        </div>
-                        @endforeach
-                    </div>
-                 </div><br />
-                 <div class="card"> 
-                    <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
+                        <div class="card">
+                          <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
+                          
+                          <div class="card-body">
+                              @foreach($roles as $role)
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" name="check_list[]" {{($user->roles->contains($role->id)) ? "checked" : ""}}>
+                                  <label class="form-check-label" for="defaultCheck{{ $role->id }}">
+                                    {{ __($role->name) }}
+                                  </label>
+                              </div>
+                              @endforeach
+                          </div>
+                       </div><br />
+                       <div class="card"> 
+                          <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
                     
                         <div class="form-group"><br />
-                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro">{{ $user->intro }}</textarea>
+                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro" required>{{ $user->intro }}</textarea>
                         </div>
- 
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

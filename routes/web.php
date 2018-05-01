@@ -66,7 +66,7 @@ Route::get('/users/{id}/edit', 'UserController@edit');
 Route::post('/users/{id}/store', 'UserController@store');
 Route::get('/users/{user}', 'UserController@show');
 Route::post('/users/{user}/update', 'UserController@update');*/
-
+Route::get('/users/{id}/delete', 'UserController@destroy');
 Route::get('/users/roles/{role}', 'RolesController@index');
 
 //Route::resource('/roles', 'RoleController');

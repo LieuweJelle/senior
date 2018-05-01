@@ -62,19 +62,31 @@ class UserController extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users', //|unique:users
             'telephone' => 'required|string|max:10',
             'password' => 'required|string|min:6|confirmed',
             'street' => 'required|string|max:255',
             'streetnumber' => 'required|string|max:255',
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
-            'intro' => 'string|nullable',
+            'intro' => 'required',
         ]);
        
-        $user = User::create([
+        $user = new User();
         //$user->role_id = auth()->role()->id; //$request->input('role_id');
-            'name' => request('name'),
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->telephone = $request->input('telephone');
+        $user->street = $request->input('street');
+        $user->streetnumber = $request->input('streetnumber');
+        $user->zipcode = $request->input('zipcode');
+        $user->place = $request->input('place');
+        $user->intro = $request->input('intro');
+        $user->save();
+         /*   'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password')),
             'firstname' => request('firstname'),
@@ -85,7 +97,7 @@ class UserController extends Controller
             'zipcode' => request('zipcode'),
             'place' => request('place'),
             'intro' => request('intro'),
-        ]);
+        ]);*/
         if(!empty($request['check_list'])) {
             $user = User::find($user->id);
             foreach($request['check_list'] as $selected) {
@@ -133,29 +145,27 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
+    public function update(Request $request, $id)
+    {                
+
         $this->validate($request, [
-            //'role_id' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            //'password' => 'required',
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'telephone' => 'required',
-            'street' => 'required',
-            'streetnumber' => 'required',
-            'zipcode' => 'required',
-            'place' => 'required',
-            'intro' => 'nullable',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255', //|unique:users
+            'telephone' => 'required|string|max:10',
+            //'password' => 'required|string|min:6|confirmed',
+            'street' => 'required|string|max:255',
+            'streetnumber' => 'required|string|max:255',
+            'zipcode' => 'required|string|max:6',
+            'place' => 'required|string|max:255',
+            'intro' => 'required',
         ]);
-        $user->update($request->all());
-  
-        /*$user = User::find($user->id);
-        $user->role_id = auth()->role()->id; //$request->input('role_id');
+        /*$user->update($request->all());*/
+        $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        //$user->password = $request->input('password');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->telephone = $request->input('telephone');
@@ -163,15 +173,12 @@ class UserController extends Controller
         $user->streetnumber = $request->input('streetnumber');
         $user->zipcode = $request->input('zipcode');
         $user->place = $request->input('place');
-        $user->save();*/
+        $user->intro = $request->input('intro');
+        $user->save();
         
-        //}
-        // 3 regels code, 3 dagen werk
-        // remember_token slaat pas op na uitloggen.
-        // intro slaat niet op!! ??
         $user->roles()->detach();
         if(!empty($request['check_list'])) {
-           //$user = User::find($user->id);
+           $user = User::find($id);
             foreach($request['check_list'] as $selected) {
                 $user->roles()->attach($selected); 
             }
@@ -186,14 +193,26 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function delete($id)
     {
-        $user = User::find($user_id);
+      $user = User::find($id);
+      //$user->roles();
+      $roles = Role::all();
+      return view('users.delete',['user' => $user, 'roles' => $roles]);
+    }
+    
+    public function destroy($id)
+    {
+      $user = User::find($id);
+      //$user->roles();
+      //$roles = Role::all();
+      //return view('users.delete',['user' => $user, 'roles' => $roles]);
+        //$user = User::find($user->id);
 
         // Check for correct user
-        if(auth()->user()->id !==$user->user_id){
+        /*if(auth()->user()->id !==$user->id){
             return redirect('/users')->with('error', 'Unauthorized Page');
-        }
+        }*/
 
         $user->delete();
         return redirect('/users')->with('success', 'User Removed');

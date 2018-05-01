@@ -34,14 +34,14 @@
 
             <td>
 
-                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                <!-- we will add this later since its a little more complicated than the other two buttons -->
-
                 <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                 <a class="btn btn-small btn-success" href="users/{{ $user->id }}">Show this User</a>
     
                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
                 <a class="btn btn-small btn-info" href="users/{{ $user->id }}/edit">Edit this User</a>
+
+                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                <a class="btn btn-small btn-danger" href="users/{{ $user->id }}/delete">Delete this User</a>
 
             </td>
         </tr>
