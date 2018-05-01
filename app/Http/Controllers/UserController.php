@@ -22,11 +22,7 @@ class UserController extends Controller
     public function index()
     {
       $users = User::all();
-      //return view('users.index', ['users' => $users]);
       return view('users.index', compact('users'));
-      
-      //$users = DB::table('users')->get();
-      //return $users; //json output to browser
     }
 
     /**
@@ -48,17 +44,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            /*'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'telephone' => 'required|min:10',
-            'street' => 'required',
-            'streetnumber' => 'required',
-            'zipcode' => 'required|max:6',
-            'place' => 'required',
-            'intro' => 'nullable',*/
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
@@ -73,7 +58,6 @@ class UserController extends Controller
         ]);
        
         $user = new User();
-        //$user->role_id = auth()->role()->id; //$request->input('role_id');
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
@@ -86,25 +70,13 @@ class UserController extends Controller
         $user->place = $request->input('place');
         $user->intro = $request->input('intro');
         $user->save();
-         /*   'name' => request('name'),
-            'email' => request('email'),
-            'password' => Hash::make(request('password')),
-            'firstname' => request('firstname'),
-            'lastname' => request('lastname'),
-            'telephone' => request('telephone'),
-            'street' => request('street'),
-            'streetnumber' => request('streetnumber'),
-            'zipcode' => request('zipcode'),
-            'place' => request('place'),
-            'intro' => request('intro'),
-        ]);*/
+
         if(!empty($request['check_list'])) {
             $user = User::find($user->id);
             foreach($request['check_list'] as $selected) {
                 $user->roles()->attach($selected); 
             }
         }
-        //return $user;
 
         return redirect()->action('UserController@index');
     }
@@ -117,11 +89,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //$user = User::find($user->id);
         $roles = Role::all();
-        //$user->roles()->attach($id); //a new row will be added to role_user table, with $role_id and $user_id values.
         return view('users.show2',['user' => $user, 'roles' => $roles]);
-
     }
 
     /**
@@ -133,7 +102,6 @@ class UserController extends Controller
     public function edit($id)
     {
       $user = User::find($id);
-      //$user->roles();
       $roles = Role::all();
       return view('users.edit',['user' => $user, 'roles' => $roles]);
     }
@@ -184,7 +152,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->route('users.index'); //->with('success', 'Post Updated');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -195,25 +163,14 @@ class UserController extends Controller
      */
     public function delete($id)
     {
-      $user = User::find($id);
-      //$user->roles();
-      $roles = Role::all();
-      return view('users.delete',['user' => $user, 'roles' => $roles]);
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('users.delete',['user' => $user, 'roles' => $roles]);
     }
     
     public function destroy($id)
     {
-      $user = User::find($id);
-      //$user->roles();
-      //$roles = Role::all();
-      //return view('users.delete',['user' => $user, 'roles' => $roles]);
-        //$user = User::find($user->id);
-
-        // Check for correct user
-        /*if(auth()->user()->id !==$user->id){
-            return redirect('/users')->with('error', 'Unauthorized Page');
-        }*/
-
+        $user = User::find($id);
         $user->delete();
         return redirect('/users')->with('success', 'User Removed');
     }
