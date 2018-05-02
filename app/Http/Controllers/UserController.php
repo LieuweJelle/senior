@@ -21,8 +21,12 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = User::all();
-      return view('users.index', compact('users'));
+        //if(auth()->user()->id == $user->id) {
+          $users = User::all();
+          return view('users.index', compact('users'));
+        //} else {
+          //return view('home');
+        //}
     }
 
     /**
@@ -48,13 +52,13 @@ class UserController extends Controller
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users', //|unique:users
-            'telephone' => 'required|string|max:10',
+            'telephone' => 'required|string|min:10|max:10',
             'password' => 'required|string|min:6|confirmed',
             'street' => 'required|string|max:255',
             'streetnumber' => 'required|string|max:255',
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
-            'intro' => 'required',
+            'intro' => 'nullable|string',
         ]);
        
         $user = new User();
@@ -121,13 +125,13 @@ class UserController extends Controller
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255', //|unique:users
-            'telephone' => 'required|string|max:10',
+            'telephone' => 'required|string|min:10|max:10',
             //'password' => 'required|string|min:6|confirmed',
             'street' => 'required|string|max:255',
             'streetnumber' => 'required|string|max:255',
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
-            'intro' => 'required',
+            'intro' => 'nullable|string',
         ]);
         /*$user->update($request->all());*/
         $user = User::find($id);

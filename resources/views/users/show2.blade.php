@@ -183,7 +183,7 @@
                     <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
                     
                         <div class="form-group"><br />
-                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro" disabled>{{ $user->intro }}</textarea>
+                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro">{{ $user->intro }}</textarea>
                         </div>
  
                         

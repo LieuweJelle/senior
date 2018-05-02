@@ -39,7 +39,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-    
+
+    public function agenda()
+    {
+        return $this->belongsTo(Agenda::class);
+    }
+   
     public function publish(Post $post)
     {
         return $this->posts()->save($post); //->create([]); user_id automatically applied. UC

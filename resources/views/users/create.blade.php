@@ -160,7 +160,11 @@
                                 @endif
                             </div>
                         </div><br />
-                
+<button type="button" class="btn btn-outline-warning">vrijwilligers taken</button>
+<button type="button" class="btn btn-outline-info">praatje over mij</button>
+<button type="button" class="btn btn-outline-danger">welke dagen/tijden</button>
+<button type="button" class="btn btn-outline-warning">vaste dagen/tijden</button>
+<br />
                         <div class="card">
                             <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
                             
@@ -180,7 +184,7 @@
                             <div class="card-header">{{ __('Vertel iets over u zelf (werk, hobby\'s, interesses )') }}</div>
                     
                         <div class="form-group"><br />
-                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro" autofocus required>{{ old('intro') }}</textarea>
+                            <textarea rows="4" cols="10" class="ta" name="intro" id="intro">{{ old('intro') }}</textarea>
                         </div>
                          
                         <div class="form-group row mb-0">

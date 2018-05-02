@@ -1,0 +1,714 @@
+Nieuwe tabel:
+
+php artisan make:model User -mcr  //outputs:
+Model created successfully //User
+Created migration 2018-20-04_create_users_table
+Controller created successfully // UserControlller
+
+edit: 2018-20-04_create_users_table // all columns
+
+php artisan migrate
+
+edit route //web.app
+edit UserController
+edit: User //relations
+
+make user/index.blade.php and edit it.
+
+
+classes:
+C:\xampp\htdocs\senior\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php
+
+php vs blade.php
+<?php foreach($tasks as $task) : ?>
+  <li><?php echo $task; ?></li>
+<?php endforeach; ?>
+wordt
+@foreach($tasks as $task)
+  <li>{{ $task }}</li>
+@endforeach
+
+commands:
+- laravel
+php artisan (lists all artisan commands)
+php artisan help migration
+php artisan serve (webserver laravel)
+php artisan make:model User //creates User-class
+php artisan make:model User -m  //creates User-class + create_users_table
+php artisan make:model User -mc  //outputs:
+Model created successfully
+Created migration 2018-20-04_create_users_table
+Controller created successfully // UserControlller
+
+php artisan tinker
+App/User::all();
+App/User::where('id', '>', 2)->get();
+App/User::pluck('name');
+
+php artisan make:controller <name> -r (index, create, store etc.)
+(r = resourcefull controller)
+
+php artisan make:migration create_users_table --create=users
+php artisan make:migration add_intro_to_users_table --table=users
+
+php artisan migrate:rollback --step=1
+php artisan migrate
+php artisan db:seed --class=RolesTableSeeder
+
+- database
+mysql -uroot -p (terminal)
+$users = DB::table('users')->get();
+return $users; (JSON output to screen)
+<!-- Laravel.html  
+We can still use raw SQL queries if needed!!
+
+XAMPP, Laravel
+PHP >= 7.1.3
+
+Laravel includes Artisan CLI (command line interface) to handle many tasks.
+php artisan list
+php artisan help migrate
+php artisan make:controller TodosController
+php artisan make:model Todo -m (-m : also migrate)
+php artisan make:migration create_to_db_table -create=to_do
+php artisan make:migration add_todos_to_db_table -table=to_do
+php artisan migrate
+
+php artisan tinker (add records to database)
+Use App\Todo;
+$todo = new Todo;
+$todo->title = 'Some todo';
+$todo->name = 'todo';
+$todo->save();
+
+https://getcomposer.org to get composer. Download and run Composer-Setup.exe
+composer = basic dependency manager
+in Terminal execute:$ composer create-project laravel/laravel <name>
+(clean up classes etc:
+    php artisan clear-compiled 
+    composer dump-autoload
+    php artisan optimize
+	php artisan migrate
+	php artisan db:seed (evt))-->
+
+Date/time php helper.  
+https://carbon.nesbot.com/#gettingstarted
+composer require nesbot/carbon (in terminal)
+C:\xampp\htdocs\senior>php artisan tinker
+Psy Shell v0.8.18 (PHP 7.2.2 — cli) by Justin Hilemanan
+>>> Carbon\Carbon::parse('April')
+=> Carbon\Carbon @1524614400 {#798
+     date: 2018-04-25 00:00:00.0 UTC (+00:00),
+   }
+>>> Carbon\Carbon::parse('April')->month
+=> 4
+>>> Carbon\Carbon::parse('April')->year
+=> 2018
+>>> Carbon\Carbon::parse('April')->day
+=> 25
+
+<!--
+get rid off 'public' localhost
+in C:/xampp/apache/conf/extra/httpd-vhosts.conf
+<VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs"
+    ServerName localhost
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/lblog/public"
+    ServerName blog.lar
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/senior/public"
+    ServerName senior.lar
+</VirtualHost>
+in Kladblok as admin C:/Windows/System32/drivers/etc hosts (view all files)
+127.0.0.1 localhost
+127.0.0.1 blog.lar
+127.0.0.1 senior.lar
+
+Deploy Laravel To Shared Hosting The Easy Way: https://www.youtube.com/watch?v=6g8G3YQtQt4&list=PLillGF-RfqbYhQsN5WMXy6VsDMKGadrJ-&index=13
+- cPanel: mySQL Database Wizard.
+1 Create Database
+2 Create Database Users
+3 Add User to the database -> All Privileges
+4 Complete the Task -> Return to mySQL Databases
+- cPanel phpmyadmin
+export/import
+- FTP files
+everything but public in lsapp
+only public in public_html
+- change file: public_html/index.php
+1 require __DIR__.'/../lsapp/bootstrap/autoload.php';
+2 $app = require_once __DIR__.'/../lsapp/bootstrap/app.php';
+- change file: .env
+1 DB_DATABASE=lieuwe1q_lsapp
+2 DB_USERNAME=lieuwe1q_lsapp
+3 DB_PASSWORD=Azarath666!
+- symlink lsapp: voor de server!(C:/xampp/htdocs/symlink.php:
+<?php
+symlink('/home/lieuwe1q/lsapp/storage/app/public/cover_images', '/home/lieuwe1q/public_html/storage/cover_images');
+?>
+delete symlink.php from server
+
+Nieuwe laravel app
+Hoe installeer ik Laravel?
+Laravel is een gelieft PHP-framework wat wereldwijd door veel ontwikkelaars wordt gebruikt en door Neostrada wordt ondersteunt. Je installeert Laravel zelf via Composer, of je maaktgebruik van Softaculous,wat bij elk hostingpakket is inbegrepen. Door Laravel via Softaculous te installeren, stel je ook gemakkelijk automatische back-ups in.
+
+Stappenplan
+Stap 1. Log in op cPanel.
+Stap 2. Klik onder Software op Softaculous Apps Installer. Softaculous wordt nu geopend.
+Stap 3. Klik in het linkermenu op de zoekbalk, voer Laravel in en klik op Laravel.
+Stap 4. Klik op Install Now. Je krijgt de volgende velden te zien:
+Choose Protocol. Kies hier of je http:// of https:// wilt gebruiken. Wij raden het gebruik van https:// aan omdat hiermee de verbinding met jouw website beveiligt wordt.
+Choose Domain. Kies hier de domeinnaam waarop je Laravel wilt installeren.
+In Directory. Als je Laravel in een aparte map wilt installeren, voer je hier de gewenste naam van die map in.
+Stap 5. Klik op Advanced Options. Hier stel je de automatische back-up in door bij Automated backups de frequentie van de back-ups aan te geven. Bij Backup Rotation geef je aan hoeveel back-ups bewaard moeten blijven.
+Stap 6. Klik op Install om de installatie te starten.
+
+eindresultaat:
+Congratulations, the software was installed successfully
+Laravel has been successfully installed at : 
+https://lieuwe-jelle.com/seniors 
+NOTE: Softaculous is just an automatic software installer and does not provide any support for the individual software packages. 
+Please visit the software vendor's web site for support!
+
+error:
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+
+
+
+Met GitHub
+Maak in Github repository aan. (+ naast pasfoto)
+In terminal in project-folder 
+C:\xampp\htdocs\senior>git init 1!!
+C:\xampp\htdocs\senior>git add .
+C:\xampp\htdocs\senior>git commit -am "first... commit"
+C:\xampp\htdocs\senior>git remote add origin git@github.com:LieuweJelle/senior.git
+fatal: remote origin already exists.
+C:\xampp\htdocs\senior>git push -u origin master
+
+git add .
+git commit -m "User class added"
+git push
+
+Output:
+fatal: HttpRequestException encountered.
+   Er is een fout opgetreden bij het verzenden van het aanvraag.
+Username for 'https://github.com': LieuweJelle
+Password for 'https://LieuweJelle@github.com': Azarath666!
+Counting objects: 124, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (108/108), done.
+Writing objects: 100% (124/124), 184.59 KiB | 3.08 MiB/s, done.
+Total 124 (delta 15), reused 0 (delta 0)
+remote: Resolving deltas: 100% (15/15), done.
+To https://github.com/LieuweJelle/senior
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+fouten zoeken:
+  - denk aan delete repository, aan .Git folder ook te deleten.
+
+  - C:\xampp\htdocs\senior>git remote get-url origin git@github.com:LieuweJelle/senior.git
+  - C:\xampp\htdocs\senior>git remote remove origin
+  - C:\xampp\htdocs\senior>git remote add origin https://github.com/LieuweJelle/senior
+
+  C:\xampp\htdocs\senior>git pull origin master
+  fatal: Couldn't find remote ref master
+  C:\xampp\htdocs\senior>git add .
+  warning: LF will be replaced by CRLF in .env.example.
+Einde Combies zoeken:
+
+
+
+
+
+git clone 'repo' (plaatje = cntr-c) maakt zelf working directory (repo) aan!
+ga naar C:\xampp\htdocs\senior (master -> origin)
+composer install 
+
+dan misschien nog:
+C:\xampp\htdocs\senior (master -> origin)
+1 - λ copy .env.example .env
+        1 file(s) copied.
+
+C:\xampp\htdocs\senior (master -> origin)
+2 - λ php artisan key:generate
+Application key [base64:ilcrsXIHeSPTfksjo+wnf9FCglJK3UB1s05YE02jBO0=] set successfully.
+
+C:\xampp\htdocs\senior (master -> origin)
+λ php artisan migrate
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+Migrating: 2018_04_16_101636_add_colums_to_users_table
+Migrated:  2018_04_16_101636_add_colums_to_users_table
+
+C:\xampp\htdocs\senior (master -> origin)
+λ php artisan db:seed
+Seeding: UsersTableSeeder
+
+C:\xampp\htdocs\senior (master -> origin)
+λ php artisan make:model Role -m
+Model created successfully.
+Created Migration: 2018_04_17_093446_create_roles_table
+
+C:\xampp\htdocs\senior (master -> origin)
+λ php artisan migrate
+Migrating: 2018_04_17_093446_create_roles_table
+Migrated:  2018_04_17_093446_create_roles_table
+
+C:\xampp\htdocs\senior (master -> origin)
+λ php artisan make:seeder RolesTableSeeder
+Seeder created successfully.
+
+C:\xampp\htdocs\senior (master -> origin)
+λ php artisan db:seed
+Seeding: UsersTableSeeder
+Seeding: RolesTableSeeder
+
+
+
+
+
+
+Recovery. Don't do this at home.
+
+C:\xampp\htdocs\senior>php artisan migrate:rollback
+Rolling back: 2018_04_16_101636_add_colums_to_users_table
+Rolled back:  2018_04_16_101636_add_colums_to_users_table
+Rolling back: 2014_10_12_100000_create_password_resets_table
+Rolled back:  2014_10_12_100000_create_password_resets_table
+Rolling back: 2014_10_12_000000_create_users_table
+Rolled back:  2014_10_12_000000_create_users_table
+
+C:\xampp\htdocs\senior>php artisan make:auth
+
+ The [auth/login.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ > no
+
+ The [auth/register.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ > no
+
+ The [auth/passwords/email.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ > no
+
+ The [auth/passwords/reset.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ > no
+
+ The [layouts/app.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ > no
+
+ The [home.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ > no
+
+Authentication scaffolding generated successfully.
+
+C:\xampp\htdocs\senior>php artisan migrate
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+Migrating: 2018_04_16_101636_add_colums_to_users_table
+Migrated:  2018_04_16_101636_add_colums_to_users_table
+Migrating: 2018_04_17_093446_create_roles_table
+Migrated:  2018_04_17_093446_create_roles_table
+
+C:\xampp\htdocs\senior>php artisan db:seed --class=RolesTableSeeder
+-->
+- view():
+view('welcome', ['name' => 'lieuwe', 'age' => 51]);
+view('welcome')->with('name', 'lieuwe');
+
+$name = 'lieuwe';
+view('welcome', ['name' => $name]);
+
+$name = 'lieuwe';
+$age = 51;
+view('welcome', compact(name, age));
+
+$users = User::all();
+return view('users.index', compact('users');
+
+<!--
+Actions Handled By the Controller
+
+HTTP Verb	Path (URL)	      Action (Method)	
+GET	      /nerds	          index	
+GET	      /nerds/create	    create	
+POST	    /nerds	          store	
+GET	      /nerds/{id}	      show	
+GET	      /nerds/{id}/edit	edit	
+PUT/PATCH	/nerds/{id}	      update	
+DELETE	  /nerds/{id}	      destroy	
+
+Tip: From the command line, you can run php artisan routes to see all the routes associated with your application.
+-->
+
+laracasts.com/series/laravel-from-scratch-2017
+11 18:00 - fillable/guarded and Model/Eloquent
+
+<!-- php artisan tinker (laracast 7 0:40)
+>>> $comment = new App\Comment();
+=> App\Comment {#788}
+>>> $comment->body = 'Nice comment';
+=> "Nice comment"
+>>> $comment->post_id = 1;
+=> 1
+>>> $comment->save();
+=> true
+>>> $post->comments
+=> Illuminate\Database\Eloquent\Collection {#797
+     all: [],
+   }
+>>> $post = App\Post::find(1);
+=> App\Post {#803
+     id: 1,
+     title: "Post Three",
+     body: "This is the Post body Three",
+     created_at: "2018-04-22 16:39:05",
+     updated_at: "2018-04-22 16:39:05",
+   }
+>>> $post->comments
+=> Illuminate\Database\Eloquent\Collection {#792
+     all: [
+       App\Comment {#801
+         id: 1,
+         post_id: 1,
+         body: "Nice comment",
+         created_at: "2018-04-22 16:54:34",
+         updated_at: "2018-04-22 16:54:34",
+       },
+     ],
+   }
+>>> -->
+$user->password = bcrypt('password');
+
+JSON:
+Route::get('/', function () {
+    $tasks = DB::table('tasks')->get();
+    return $tasks;
+});
+Outputs:
+[
+{
+"id": 1,
+"body": "nummer 1",
+"created_at": "2018-04-23 00:00:00",
+"updated_at": "2018-04-23 00:00:00"
+},
+{
+"id": 2,
+"body": "nummer 2",
+"created_at": "2018-04-23 00:00:00",
+"updated_at": "2018-04-23 00:00:00"
+}
+]
+
+layout setup:
+view the source and grab it.
+replace bootstrap css with the CDN file.
+find the local css-file and copy it in the project-file.
+find special sections and put them in seperate files. navs & footers.
+put the rest in index.blade.php-file.
+
+<!--
+database queries:
+>>> $post = App\Post::find(1);
+=> App\Post {#806
+     id: 1,
+     user_id: 4,
+     title: "August Burns Red",
+     body: """
+       <ul>\r\n
+       <li><i><a href="/wiki/Thrill_Seeker" title="Thrill Seeker">Thrill Seeker</a></i> (2005)</li>\r\n
+       <li><i><a href="/wiki/Messengers_(album)" title="Messengers (album)">Messengers</a></i> (2007)</li>\r\n
+       <li><i><a href="/wiki/Constellations_(August_Burns_Red_album)" title="Constellations (August Burns Red album)">Constellations</a></i> (2009)</li>\r\n
+       <li><i><a href="/wiki/Leveler_(album)" title="Leveler (album)">Leveler</a></i> (2011)</li>\r\n
+       <li><i><a href="/wiki/August_Burns_Red_Presents:_Sleddin%27_Hill" title="August Burns Red Presents: Sleddin' Hill">Sleddin' Hill</a></i> (2012)</li>\r\n
+       <li><i><a href="/wiki/Rescue_%26_Restore" title="Rescue &amp; Restore">Rescue &amp; Restore</a></i> (2013)</li>\r\n
+       <li><i><a href="/wiki/Found_in_Far_Away_Places" title="Found in Far Away Places">Found in Far Away Places</a></i> (2015)</li>\r\n
+       <li><i><a href="/wiki/Phantom_Anthem" title="Phantom Anthem">Phantom Anthem</a></i> (2017)</li>\r\n
+       </ul>
+       """,
+     created_at: "2018-04-24 18:39:01",
+     updated_at: "2018-04-24 18:39:01",
+   }
+>>> $post->tags;
+=> Illuminate\Database\Eloquent\Collection {#805
+     all: [
+       App\Tag {#808
+         id: 1,
+         name: "php",
+         created_at: "2018-04-29 00:00:00",
+         updated_at: "2018-04-29 00:00:00",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#809
+           post_id: 1,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#797
+         id: 2,
+         name: "laravel",
+         created_at: "2018-04-29 00:00:00",
+         updated_at: "2018-04-29 00:00:00",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#794
+           post_id: 1,
+           tag_id: 2,
+         },
+       },
+       App\Tag {#810
+         id: 4,
+         name: "html",
+         created_at: "2018-04-29 00:00:00",
+         updated_at: "2018-04-29 00:00:00",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#803
+           post_id: 1,
+           tag_id: 4,
+         },
+       },
+     ],
+   }
+>>>
+>>> $post->tags()->pluck('name')
+=> Illuminate\Support\Collection {#820
+     all: [
+       "php",
+       "laravel",
+       "html",
+     ],
+   }
+>>>
+
+C:\xampp\htdocs\senior>php artisan tinker
+Psy Shell v0.8.18 (PHP 7.2.2 — cli) by Justin Hilemanan
+>>> $tag = App\Tag::first();
+=> App\Tag {#802
+     id: 1,
+     name: "php",
+     created_at: "2018-04-29 00:00:00",
+     updated_at: "2018-04-29 00:00:00",
+   }
+>>> $tag->posts;
+=> Illuminate\Database\Eloquent\Collection {#797
+     all: [
+       App\Post {#806
+         id: 1,
+         user_id: 4,
+         title: "August Burns Red",
+         body: """
+           <ul>\r\n
+           <li><i><a href="/wiki/Thrill_Seeker" title="Thrill Seeker">Thrill Seeker</a></i> (2005)</li>\r\n
+           <li><i><a href="/wiki/Messengers_(album)" title="Messengers (album)">Messengers</a></i> (2007)</li>\r\n
+           <li><i><a href="/wiki/Constellations_(August_Burns_Red_album)" title="Constellations (August Burns Red album)">Constellations</a></i> (2009)</li>\r\n
+           <li><i><a href="/wiki/Leveler_(album)" title="Leveler (album)">Leveler</a></i> (2011)</li>\r\n
+           <li><i><a href="/wiki/August_Burns_Red_Presents:_Sleddin%27_Hill" title="August Burns Red Presents: Sleddin' Hill">Sleddin' Hill</a></i> (2012)</li>\r\n
+           <li><i><a href="/wiki/Rescue_%26_Restore" title="Rescue &amp; Restore">Rescue &amp; Restore</a></i> (2013)</li>\r\n
+           <li><i><a href="/wiki/Found_in_Far_Away_Places" title="Found in Far Away Places">Found in Far Away Places</a></i> (2015)</li>\r\n
+           <li><i><a href="/wiki/Phantom_Anthem" title="Phantom Anthem">Phantom Anthem</a></i> (2017)</li>\r\n
+           </ul>
+           """,
+         created_at: "2018-04-24 18:39:01",
+         updated_at: "2018-04-24 18:39:01",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#801
+           tag_id: 1,
+           post_id: 1,
+         },
+       },
+       App\Post {#803
+         id: 2,
+         user_id: 1,
+         title: "August Burns Red",
+         body: """
+           Thrill Seeker (2005)\r\n
+           Messengers (2007)\r\n
+           Constellations (2009)\r\n
+           Leveler (2011)\r\n
+           August Burns Red Presents: Sleddin' Hill (2012)\r\n
+           Rescue & Restore (2013)\r\n
+           Found in Far Away Places (2015)\r\n
+           Phantom Anthem (2017)
+           """,
+         created_at: "2018-04-25 07:59:06",
+         updated_at: "2018-04-25 07:59:06",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#795
+           tag_id: 1,
+           post_id: 2,
+         },
+       },
+     ],
+   }
+>>>
+>>> App\Post::all();
+=> Illuminate\Database\Eloquent\Collection {#810
+     all: [
+       App\Post {#809
+         id: 1,
+         user_id: 4,
+         title: "August Burns Red",
+         body: """
+           <ul>\r\n
+           <li><i><a href="/wiki/Thrill_Seeker" title="Thrill Seeker">Thrill Seeker</a></i> (2005)</li>\r\n
+           <li><i><a href="/wiki/Messengers_(album)" title="Messengers (album)">Messengers</a></i> (2007)</li>\r\n
+           <li><i><a href="/wiki/Constellations_(August_Burns_Red_album)" title="Constellations (August Burns Red album)">Constellations</a></i> (2009)</li>\r\n
+           <li><i><a href="/wiki/Leveler_(album)" title="Leveler (album)">Leveler</a></i> (2011)</li>\r\n
+           <li><i><a href="/wiki/August_Burns_Red_Presents:_Sleddin%27_Hill" title="August Burns Red Presents: Sleddin' Hill">Sleddin' Hill</a></i> (2012)</li>\r\n
+           <li><i><a href="/wiki/Rescue_%26_Restore" title="Rescue &amp; Restore">Rescue &amp; Restore</a></i> (2013)</li>\r\n
+           <li><i><a href="/wiki/Found_in_Far_Away_Places" title="Found in Far Away Places">Found in Far Away Places</a></i> (2015)</li>\r\n
+           <li><i><a href="/wiki/Phantom_Anthem" title="Phantom Anthem">Phantom Anthem</a></i> (2017)</li>\r\n
+           </ul>
+           """,
+         created_at: "2018-04-24 18:39:01",
+         updated_at: "2018-04-24 18:39:01",
+       },
+       App\Post {#811
+         id: 2,
+         user_id: 1,
+         title: "August Burns Red",
+         body: """
+           Thrill Seeker (2005)\r\n
+           Messengers (2007)\r\n
+           Constellations (2009)\r\n
+           Leveler (2011)\r\n
+           August Burns Red Presents: Sleddin' Hill (2012)\r\n
+           Rescue & Restore (2013)\r\n
+           Found in Far Away Places (2015)\r\n
+           Phantom Anthem (2017)
+           """,
+         created_at: "2018-04-25 07:59:06",
+         updated_at: "2018-04-25 07:59:06",
+       },
+       App\Post {#812
+         id: 3,
+         user_id: 1,
+         title: "At the Gates",
+         body: """
+           The Red in the Sky Is Ours (1992)\r\n
+           With Fear I Kiss the Burning Darkness (1993)\r\n
+           Terminal Spirit Disease (1994)\r\n
+           Slaughter of the Soul (1995)\r\n
+           At War with Reality (2014)\r\n
+           To Drink from the Night Itself (2018)
+           """,
+         created_at: "2018-04-25 16:43:59",
+         updated_at: "2018-04-25 16:43:59",
+       },
+     ],
+   }
+>>> 
+
+>>> App\Post::with('tags')->get();
+>>> App\Post::with('tags', 'comments')->get();
+-->
+
+associate:
+<!--
+>>> $post = App\Post::find(3);
+=> App\Post {#865
+     id: 3,
+     user_id: 1,
+     title: "At the Gates",
+     body: """
+       The Red in the Sky Is Ours (1992)\r\n
+       With Fear I Kiss the Burning Darkness (1993)\r\n
+       Terminal Spirit Disease (1994)\r\n
+       Slaughter of the Soul (1995)\r\n
+       At War with Reality (2014)\r\n
+       To Drink from the Night Itself (2018)
+       """,
+     created_at: "2018-04-25 16:43:59",
+     updated_at: "2018-04-25 16:43:59",
+   }
+>>> $tag = App\Tag::where('name', 'javascript')->first();
+=> App\Tag {#861
+     id: 3,
+     name: "javascript",
+     created_at: "2018-04-29 00:00:00",
+     updated_at: "2018-04-29 00:00:00",
+   }
+>>> $post->tags()->attach($tag); // model or id of the model.
+post_tag updated with post->id = 3 & tag->id = 3!!
+use $post->tags()->detach($tag); to remove.
+
+
+
+
+
+>>> App\Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')->groupBy('year', 'month')->get();
+=> Illuminate\Database\Eloquent\Collection {#812
+     all: [
+       App\Post {#813
+         year: 2018,
+         month: "April",
+         published: 2,
+       },
+     ],
+   }
+>>> App\Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')->groupBy('year', 'month')->get()->toArray();
+=> [
+     [
+       "year" => 2018,
+       "month" => "April",
+       "published" => 2,
+     ],
+   ]
+   
+   
+C:\xampp\htdocs\senior>php artisan tinker
+Psy Shell v0.8.18 (PHP 7.2.2 — cli) by Justin Hilemanan
+>>> App\Role::pluck('name'); // namen van de role_user table via de role table.
+=> Illuminate\Support\Collection {#110
+     all: [
+       "Administrator",
+       "Boodschapper",
+       "Huishoudelijke hulp",
+       "Hulpverlener",
+       "Klusser",
+       "Senior",
+       "Thuisbezoeker",
+     ],
+   }
+>>>
+>>> App\Role::has('users')->pluck('name'); //alle ingebruik zijnde Roles
+=> Illuminate\Support\Collection {#807
+     all: [
+       "Administrator",
+       "Huishoudelijke hulp",
+       "Klusser",
+       "Senior",
+     ],
+   }
+>>>
+
+register:
+                        <div class="form-check">
+                          <!-- <?php $roles = \App\Role::all()->pluck('name'); ?>
+                          @foreach($roles as $role)
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck{{ $role->id }}">
+                            <label class="form-check-label" for="defaultCheck{{ $role->id }}">
+                              {{ __($role->name) }}
+                            </label>
+                          @endforeach
+                        </div>
+web:
+
+//Route::resource('/roles', 'RoleController');
+
+/* Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');*/
+Route::get('/register2', function () {
+    return view('auth.register2');
+});
+
+/*Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy'); //Ook in browser: senior.lar/logout logd je uit */

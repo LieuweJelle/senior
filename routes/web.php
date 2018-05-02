@@ -72,11 +72,12 @@ Route::get('/users/roles/{role}', 'RolesController@index');
 //Route::resource('/roles', 'RoleController');
 
 /* Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');*/
+Route::post('/register', 'RegistrationController@store');
 Route::get('/register2', function () {
     return view('auth.register2');
-});
+});*/
 
 /*Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy'); //Ook in browser: senior.lar/logout logd je uit */
+Route::resource('/agendas', 'AgendaController');
