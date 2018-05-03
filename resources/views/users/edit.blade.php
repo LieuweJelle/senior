@@ -161,6 +161,11 @@
                                 @endif
                             </div>
                         </div><br />
+<button type="button" class="btn btn-outline-warning">vrijwilligers taken</button>
+<button type="button" class="btn btn-outline-info">praatje over mij</button>
+<button type="button" class="btn btn-outline-danger">welke dagen/tijden</button>
+<button type="button" class="btn btn-outline-warning">vaste dagen/tijden</button>
+<br />
 
                         <div class="card">
                           <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
@@ -187,6 +192,9 @@
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Wijzigen') }}
+                                </button>
+                                <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ route('agendas.show', [ 'id' => $user->id ]) }}'">
+                                    {{ __('Mijn Agenda') }}
                                 </button>
                             </div>
                         </div>

@@ -18,7 +18,11 @@
 
   <body>
     <div class="header">
-      <h2>Blog Name</h2>
+    @if(Auth::check())
+      <h2>{{ Auth::user()->firstname}} {{ Auth::user()->lastname}}</h2>
+    @else
+      <h2>Groningen, Korreweg-wijk</h2>
+    @endif
     </div>
     <div class="row">
       <div class="leftcolumn">

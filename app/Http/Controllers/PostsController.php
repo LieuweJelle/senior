@@ -37,13 +37,15 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
         
-        //19 14:00 auth()->user()->publish(new Post(request('title', 'body')));
+        auth()->user()->publish(
+          new Post(request(['title', 'body'])
+        )); //19 14:00 
         
-        Post::create([
+        /*Post::create([
             'title' => request('title'),
             'body' => request('body'),
             'user_id' => auth()->id() // auth()->user()->id()
-        ]);
+        ]);*/
         
         return redirect('/posts')->with('success', 'Post Created');
         // Validate request

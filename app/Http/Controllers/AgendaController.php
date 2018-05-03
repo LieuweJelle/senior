@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Agenda;
+use App\User;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
@@ -12,10 +13,15 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $agenda = new Agenda();
-        return view('agendas.index', compact('agenda'));
+        $agendas = User::find($id)->agendas;
+        return view('agendas.index', compact('agendas'));
+        //$user=User::find($user->id); // Just Eloquent
+        //$agendas=$user->agendas;        
+        //$agendas = User::find($user->id)->agendas;
+       //$agendas = Agenda::where('user_id', '=', Auth::user()->id)->get();
+        //return view('agendas.index', compact('agendas'));
     }
 
     /**
@@ -25,7 +31,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('agendas.create');
     }
 
     /**
@@ -34,9 +40,19 @@ class AgendaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(User $user)
     {
-        //
+        /*$this->validate(request(), ['d' => 'required', 'm' => 'required', 'y' => 'required']);
+        
+        Agenda::create([
+          'd' => request('d'),
+          'm' => request('m'),
+          'y' => request('y'),
+          'user_id' => $user->id
+        ]);*/
+        $user->addAgenda(request('d'));
+
+        return back();
     }
 
     /**
@@ -45,9 +61,10 @@ class AgendaController extends Controller
      * @param  \App\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function show(Agenda $agenda)
+    public function show($id)
     {
-        //
+        $agendas = User::find($id)->agendas;
+        return view('agendas.index', compact('agendas'));
     }
 
     /**

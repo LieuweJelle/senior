@@ -21,7 +21,7 @@
       @foreach($post->comments as $comment)
         <li class="list-group-item">
           <strong>
-            {{ $comment->created_at }}:&nbsp;
+            {{ $comment->created_at->diffForHumans() }}:&nbsp; <!--  -->
           </strong>
           {{ $comment->body }}
         </li>
@@ -31,12 +31,12 @@
     <hr />
     <div class="card">
       <div class="card-block">
-        <form method="POST" action="/posts/{{ $post->id }}">
+        <form method="POST" action="/posts/{{ $post->id }}/comments">
           @csrf
-          @method('PATCH')
-          <div class="form-group">
+          {{-- @method('PATCH') --}}
+          <!--<div class="form-group">
             <input type="text" name="title" id="title" placeholder="Titel" class="form-control" required></textarea>
-          </div>
+          </div>-->
           <div class="form-group">
             <textarea name="body" id="body" placeholder="Comment" class="form-control" required></textarea>
           </div>

@@ -9,36 +9,15 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-
-Route::get('foo', function () { //<pd>foo => hello World
-    return 'Hello World';
-});
-
-Route::get('/users/{id}/{name}', function ($id, $name) {
-    return 'This is user '.$name.' with an id of '.$id; //http://senior.lar/users/249/LieuweJelle => This is user LieuweJelle with an id of 249
-});
 */
-Route::get('/', function () { //rechtstreeks zonder Controller. (->name('home'); -izm- return redirect()->home();)
+Route::get('/', function () { // (->name('home'); -izm- return redirect()->home();)
     $tasks = ['Watch video', 'Practice', 'Build'];
     return view('welcome', compact('tasks'));
-    //$tasks = DB::table('tasks')->get();
-    //return $tasks; //JSON array
 });
-Route::get('practice', function () {
-    return view('practice');
-});
-
-Route::get('about', function () {
-    return view('about');
-});
-
-Route::get('senior', function () {
-    return view('senior');
-});
-
-Route::get('social', function () {
-    return view('social');
-});
+Route::view('practice', 'practice');
+Route::view('about', 'about');
+Route::view('senior', 'senior');
+Route::view('social', 'social');
 
 Auth::routes();
 
@@ -66,7 +45,7 @@ Route::get('/users/{id}/edit', 'UserController@edit');
 Route::post('/users/{id}/store', 'UserController@store');
 Route::get('/users/{user}', 'UserController@show');
 Route::post('/users/{user}/update', 'UserController@update');*/
-Route::get('/users/{id}/delete', 'UserController@destroy');
+
 Route::get('/users/roles/{role}', 'RolesController@index');
 
 //Route::resource('/roles', 'RoleController');
@@ -80,4 +59,9 @@ Route::get('/register2', function () {
 /*Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy'); //Ook in browser: senior.lar/logout logd je uit */
+
 Route::resource('/agendas', 'AgendaController');
+//Route::get('agendas/index', array('uses' => 'AgendaController@index', 'as' => 'agendas.index'));
+//Route::get('/users/agendas/{agenda}', 'AgendaController@index');
+//Route::get('/users/{user}/agendas', 'AgendaController@show');
+//Route::get('/agendas/{agenda}', 'AgendaController@show');

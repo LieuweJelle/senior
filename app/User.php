@@ -40,14 +40,28 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function agenda()
+    public function agendas()
     {
-        return $this->belongsTo(Agenda::class);
+        return $this->hasMany(Agenda::class);
     }
    
     public function publish(Post $post)
     {
         return $this->posts()->save($post); //->create([]); user_id automatically applied. UC
     }
+    
+    public function addAgenda($record)
+    {
+        /*Comment::create([
+          'record' => $record,
+          'post_id' => $this->id,
+          //'user_id' => 1
+        ]);
+        
+        $this->comments()->create(['record' => $record],);
+        */
+        return $this->agendas()->create(compact('record'));
+    }
+    
     
 }
