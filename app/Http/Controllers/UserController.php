@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use App\Http\Requests\StoreUser; //!!!!
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,10 +12,9 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function __construct(){
-      $this->middleware('auth');
-      //$this->middleware('auth', ['only', 'index']);
-      //$this->middleware('auth', ['except', 'index']);
-      
+        $this->middleware('auth');
+        //$this->middleware('auth', ['only', 'index']);
+        //$this->middleware('auth', ['except', 'index']);
     }
 
     /**
@@ -24,12 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //if(auth()->user()->id == $user->id) {
-          $users = User::all();
-          return view('users.index', compact('users'));
-        //} else {
-          //return view('home');
-        //}
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -48,10 +44,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $this->validate($request, [
-            'firstname' => 'required|string|max:255',
+        /*$this->validate($request, [
+            'firstname' => 'required|string|max:255', //bail
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users', //|unique:users
@@ -62,8 +58,9 @@ class UserController extends Controller
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
             'intro' => 'nullable|string',
-        ]);
-       
+        ]);*/
+        $validated = $request->validated();
+        
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -97,7 +94,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $roles = Role::all();
-        return view('users.show2',['user' => $user, 'roles' => $roles]);
+        return view('users.show',['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -120,10 +117,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUser $request, $id)
     {                
-
-        $this->validate($request, [
+        /*$this->validate($request, [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
@@ -135,7 +131,8 @@ class UserController extends Controller
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
             'intro' => 'nullable|string',
-        ]);
+        ]);*/
+        $validated = $request->validated();
         /*$user->update($request->all());*/
         $user = User::find($id);
         $user->name = $request->input('name');
