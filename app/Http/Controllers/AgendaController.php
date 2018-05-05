@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Agenda;
 use App\User;
+use App\Http\Requests\StoreAgenda;
+
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,19 +45,11 @@ class AgendaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user)
+    public function store(StoreAgenda $request)
     {
-        /*$this->validate(request(), ['d' => 'required', 'm' => 'required', 'y' => 'required']);
-        
-        Agenda::create([
-          'd' => request('d'),
-          'm' => request('m'),
-          'y' => request('y'),
-          'user_id' => $user->id
-        ]);*/
-        $user->addAgenda(request('d'));
-
-        return back();
+        $agenda = Agenda::create($request->all());
+       
+        return redirect()->action('AgendaController@index');
     }
 
     /**
@@ -64,7 +61,8 @@ class AgendaController extends Controller
     public function show($id)
     {
         $agendas = User::find($id)->agendas;
-        return view('agendas.show', compact('agendas'));
+        $roles = User::find($id)->roles;
+        return view('agendas.show', compact('agendas', 'roles'));
     }
 
     /**
@@ -73,9 +71,12 @@ class AgendaController extends Controller
      * @param  \App\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function edit(Agenda $agenda)
+    public function edit($id)
     {
-        //
+      $agenda = Agenda::find($id);
+      $roles = Role::all();
+      return view('agendas.edit',['agenda' => $agenda, 'roles' => $roles]);
+
     }
 
     /**
@@ -85,9 +86,13 @@ class AgendaController extends Controller
      * @param  \App\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Agenda $agenda)
+    public function update(StoreAgenda $request, $id)
     {
-        //
+        $agenda = Agenda::find($id);
+        $agenda->update($request->all());
+        
+        return redirect()->route('agendas.index');
+
     }
 
     /**

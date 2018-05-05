@@ -9,15 +9,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Senior') }}</title>
+    
+    <!-- Scripts -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('foundation/css/foundation.min.css') }}">
-    <script src="{{ asset('foundation/js/vendor/jquery.js') }}"></script>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="{{ asset('foundation/js/vendor/jquery.js') }}"></script>
     <script src="{{ asset('js/foundation-datepicker.js') }}"></script>
     <script src="{{ asset('js/locales/foundation-datepicker.nl.js') }}"></script>
+    
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
+    <!--<link rel="stylesheet" href="{{ asset('foundation/css/foundation.min.css') }}">-->
     <link rel="stylesheet" href="{{ asset('css/foundation-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/example.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

@@ -34,6 +34,7 @@ class StoreUser extends FormRequest
             'place' => 'required|string|max:255',
             'intro' => 'nullable|string',
         ];
+        
         if ($this->isMethod('post')) {
             $rules = array_merge($rules, ['email' => 'required|string|email|max:255|unique:users']);
             $rules = array_merge($rules, ['password' => 'required|string|min:6|confirmed']);
