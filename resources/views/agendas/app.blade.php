@@ -9,32 +9,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Senior') }}</title>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('foundation/css/foundation.min.css') }}">
+    <script src="{{ asset('foundation/js/vendor/jquery.js') }}"></script>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="{{ asset('js/foundation-datepicker.js') }}"></script>
+    <script src="{{ asset('js/locales/foundation-datepicker.nl.js') }}"></script>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ asset('js/senior.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/foundation-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/example.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/senior.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-    <script>
-/*
-if(screen.width > 700) {
-	document.getElementById("app").style.width = "100%"; 
-	document.getElementById("app").style.height = "100%";
-	document.getElementById("app").style.background = "url({{ asset('img/hart.jpg') }}) repeat left top";
-} else {
-}*/
-</script>
-
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

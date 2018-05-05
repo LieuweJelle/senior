@@ -64,7 +64,7 @@ class AgendaController extends Controller
     public function show($id)
     {
         $agendas = User::find($id)->agendas;
-        return view('agendas.index', compact('agendas'));
+        return view('agendas.show', compact('agendas'));
     }
 
     /**
