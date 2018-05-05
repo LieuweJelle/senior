@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Http\Requests\StoreUser; //!!!!
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,39 +45,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser $request)
+    public function store(StoreUser $request) 
     {
-        /*$this->validate($request, [
-            'firstname' => 'required|string|max:255', //bail
-            'lastname' => 'required|string|max:255',
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users', //|unique:users
-            'telephone' => 'required|string|min:10|max:10',
-            'password' => 'required|string|min:6|confirmed',
-            'street' => 'required|string|max:255',
-            'streetnumber' => 'required|string|max:255',
-            'zipcode' => 'required|string|max:6',
-            'place' => 'required|string|max:255',
-            'intro' => 'nullable|string',
-        ]);*/
-        $validated = $request->validated();
+        $user = User::create($request->all());
         
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-        $user->firstname = $request->input('firstname');
-        $user->lastname = $request->input('lastname');
-        $user->telephone = $request->input('telephone');
-        $user->street = $request->input('street');
-        $user->streetnumber = $request->input('streetnumber');
-        $user->zipcode = $request->input('zipcode');
-        $user->place = $request->input('place');
-        $user->intro = $request->input('intro');
-        $user->save();
-
         if(!empty($request['check_list'])) {
-            $user = User::find($user->id);
             foreach($request['check_list'] as $selected) {
                 $user->roles()->attach($selected); 
             }
@@ -117,40 +90,13 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUser $request, $id)
+    public function update(StoreUser $request, $id) 
     {                
-        /*$this->validate($request, [
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255', //|unique:users
-            'telephone' => 'required|string|min:10|max:10',
-            //'password' => 'required|string|min:6|confirmed',
-            'street' => 'required|string|max:255',
-            'streetnumber' => 'required|string|max:255',
-            'zipcode' => 'required|string|max:6',
-            'place' => 'required|string|max:255',
-            'intro' => 'nullable|string',
-        ]);*/
-        $validated = $request->validated();
-        /*$user->update($request->all());*/
         $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        //$user->password = $request->input('password');
-        $user->firstname = $request->input('firstname');
-        $user->lastname = $request->input('lastname');
-        $user->telephone = $request->input('telephone');
-        $user->street = $request->input('street');
-        $user->streetnumber = $request->input('streetnumber');
-        $user->zipcode = $request->input('zipcode');
-        $user->place = $request->input('place');
-        $user->intro = $request->input('intro');
-        $user->save();
+        $user->update($request->all());
         
         $user->roles()->detach();
         if(!empty($request['check_list'])) {
-           $user = User::find($id);
             foreach($request['check_list'] as $selected) {
                 $user->roles()->attach($selected); 
             }

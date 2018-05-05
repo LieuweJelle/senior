@@ -24,6 +24,13 @@
     <body style="margin-top:30px;">
         <div class="container">
           <h1>Testing Page</h1>
+          
+          <?php
+$a1=array("a"=>"red","b"=>"green");
+$a2=array("c"=>"blue","b"=>"yellow");
+print_r(array_merge($a1, ["c"=>"blue"]));
+?>
+
         </div>
     </body>
 </html>

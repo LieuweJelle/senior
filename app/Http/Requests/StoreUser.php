@@ -23,22 +23,28 @@ class StoreUser extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'firstname' => 'required|string|max:255', //bail
             'lastname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
             'telephone' => 'required|string|min:10|max:10',
-            'password' => 'required|string|min:6|confirmed',
             'street' => 'required|string|max:255',
             'streetnumber' => 'required|string|max:255',
             'zipcode' => 'required|string|max:6',
             'place' => 'required|string|max:255',
             'intro' => 'nullable|string',
         ];
+        if ($this->isMethod('post')) {
+            $rules = array_merge($rules, ['email' => 'required|string|email|max:255|unique:users']);
+            $rules = array_merge($rules, ['password' => 'required|string|min:6|confirmed']);
+        } elseif ($this->isMethod('put')) {
+            $rules = array_merge($rules, ['email' => 'required|string|email|max:255']);
+        } 
+        
+        return $rules;
     }
 
-    public function messages()
+    public function messages() //wordt al eerder in html afgevangen. 
     {
         return [
             'firstname.required' => 'De voornaam is vereist',
