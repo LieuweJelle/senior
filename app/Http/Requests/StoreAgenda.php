@@ -23,9 +23,10 @@ class StoreAgenda extends FormRequest
      */
     public function rules()
     {
-      
+
         return [
             'user_id' => 'required|integer',
+            'role_id' => 'required|integer',
             'd' => 'required|integer',
             'm' => 'required|integer',
             'y' => 'required|integer',

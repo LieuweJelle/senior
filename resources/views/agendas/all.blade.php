@@ -3,12 +3,13 @@
         <tr>
             <td>ID</td>
             <td>UserID</td>
-            <td>Day</td>
-            <td>Month</td>
-            <td>Year</td>
+            <td>Taak</td>
+            <td>Dag</td>
+            <td>Maand</td>
+            <td>Jaar</td>
             <td>van</td>
             <td>tot</td>
-            <td>Created</td>
+            <td>Aaangemaakt</td>
             <td>Updated</td>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
         <tr>
             <td>{{ $agenda->id }}</td>
             <td>{{ $agenda->user_id }}</td>
+            <td>{{ $agenda->role_id }}</td>
             <td>{{ $agenda->d }}</td>
             <td>{{ $agenda->m }}</td>
             <td>{{ $agenda->y }}</td>
@@ -40,6 +42,7 @@
             </td>
         </tr>
     @endforeach
+    
     @endif
     </tbody>
 </table>

@@ -11,13 +11,14 @@
 |
 */
 Route::get('/', function () { 
-    $tasks = ['about', 'practice', 'senior', 'social'];
+    $tasks = ['about', 'practice', 'senior', 'social', 'gebruikers'];
     return view('welcome', compact('tasks'));
 });
 Route::view('about', 'about');
 Route::view('practice', 'practice');
 Route::view('senior', 'senior');
 Route::view('social', 'social');
+Route::get('/gebruikers', 'UserController@index');
 
 Auth::routes();
 
