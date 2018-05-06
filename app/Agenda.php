@@ -10,9 +10,9 @@ class Agenda extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function role() // $post->agenda->name OR!! $comment->post->user
+    public function role() 
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
 }

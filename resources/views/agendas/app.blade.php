@@ -79,6 +79,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+   <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
+   </div>
 </body>
 </html>

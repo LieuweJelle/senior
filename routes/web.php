@@ -25,6 +25,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index'); //->name('home');
 
 Route::resource('/users', 'UserController');
+Route::get('users/{id}/delete', 'UserController@delete');
+
 /*
 Route::prefix('users')->group(function () {
   Route::post('/', 'UserController@index');
@@ -38,8 +40,11 @@ Route::prefix('users')->group(function () {
 under construction! */
 
 Route::resource('/agendas', 'AgendaController');
-Route::get('agenda/create', 'AgendaController@create');
-Route::post('agenda', 'AgendaController@store');
+Route::get('agendas/create', 'AgendaController@create');
+Route::post('agendas/{id}/store', 'AgendaController@store');
+Route::get('agendas/{id}/edit', 'AgendaController@edit');
+Route::get('agendas/{id}/delete', 'AgendaController@delete');
+
 //Route::get('agendas/index', array('uses' => 'AgendaController@index', 'as' => 'agendas.index'));
 //Route::get('/users/agendas/{agenda}', 'AgendaController@index');
 //Route::get('/users/{user}/agendas', 'AgendaController@show');

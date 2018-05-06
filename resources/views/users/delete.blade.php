@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.destroy', [ 'id' => $user->id ]) }}">
                         @csrf
-                        @method('DESTROY')
+                        @method('DELETE')
 
                         <div class="form-group row">
                             <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam') }}</label>

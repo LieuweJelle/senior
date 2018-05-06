@@ -5,16 +5,16 @@
     <thead>
         <tr>
             <td>ID</td>
-            <td>Name</td>
+            <td>Gebruikersnaam</td>
             <td>Email</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Telephone</td>
-            <td>Street</td>
-            <td>S-nr</td>
-            <td>Zipcode</td>
-            <td>Place</td>
-            <td>Intro</td>
+            <td>Voornaam</td>
+            <td>Achternaam</td>
+            <td>Telefoon</td>
+            <td>Straat</td>
+            <td>Nr</td>
+            <td>Postcode</td>
+            <td>Woonplaats</td>
+            <td>Introductie</td>
         </tr>
     </thead>
     <tbody>
@@ -33,19 +33,24 @@
             <td>{{ $user->intro }}</td>
 
             <td>
-
-                <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                <a class="btn btn-small btn-success" href="users/{{ $user->id }}">Show this User</a>
-    
-                <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                <a class="btn btn-small btn-info" href="users/{{ $user->id }}/edit">Edit this User</a>
-
-                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                <a class="btn btn-small btn-danger" href="users/{{ $user->id }}/delete">Delete this User</a>
-
+                <a class="btn btn-small btn-success" href="/users/{{ $user->id }}">Show this User</a>
+                <a class="btn btn-small btn-info" href="/users/{{ $user->id }}/edit">Edit this User</a>
+                <a class="btn btn-small btn-danger" href="/users/{{ $user->id }}/delete">Delete this User</a>
             </td>
         </tr>
     @endforeach
     </tbody>
-</table>            
+</table> 
+<form method="GET" action="{{ route('users.create') }}">
+<div class="form-group row mb-0">
+  <div class="col-md-6 offset-md-4">
+      <button type="submit" class="btn btn-primary">
+          {{ __('Toevoegen Senioren en Vrijwilligers') }}
+      </button>
+      <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+          {{ __('Terug') }}
+      </button>
+  </div>
+</div>
+</form>
 @endsection

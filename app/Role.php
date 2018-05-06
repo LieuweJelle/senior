@@ -17,7 +17,7 @@ class Role extends Model
     
      public function agenda()
     {
-        return $this->belongs(Agenda::class);
+        return $this->belongsTo(Agenda::class);
     }
     
    
