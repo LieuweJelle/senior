@@ -30,7 +30,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ $user->lastname }}" required autofocus>
+                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ $user->lastname }}" required>
 
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback">
@@ -44,7 +44,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gebruikersnaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -80,37 +80,13 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <!--<div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wachtwoord') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Bevestig wachtwoord') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>-->
-                        
-                        <br />
+                        </div><br />
                         
                         <div class="form-group row">
                             <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ $user->street }}" required autofocus>
+                                <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ $user->street }}" required>
 
                                 @if ($errors->has('street'))
                                     <span class="invalid-feedback">
@@ -124,7 +100,7 @@
                             <label for="streetnumber" class="col-md-4 col-form-label text-md-right">{{ __('Straatnummer') }}</label>
 
                             <div class="col-md-6">
-                                <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ $user->streetnumber }}" required autofocus>
+                                <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ $user->streetnumber }}" required>
 
                                 @if ($errors->has('streetnumber'))
                                     <span class="invalid-feedback">
@@ -138,7 +114,7 @@
                             <label for="zipcode" class="col-md-4 col-form-label text-md-right">{{ __('Postcode') }}</label>
 
                             <div class="col-md-6">
-                                <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ $user->zipcode }}" required autofocus>
+                                <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ $user->zipcode }}" required>
 
                                 @if ($errors->has('zipcode'))
                                     <span class="invalid-feedback">
@@ -152,7 +128,7 @@
                             <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Woonplaats') }}</label>
 
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ $user->place }}" required autofocus>
+                                <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ $user->place }}" required>
 
                                 @if ($errors->has('place'))
                                     <span class="invalid-feedback">
@@ -161,11 +137,6 @@
                                 @endif
                             </div>
                         </div><br />
-<button type="button" class="btn btn-outline-warning">vrijwilligers taken</button>
-<button type="button" class="btn btn-outline-info">praatje over mij</button>
-<button type="button" class="btn btn-outline-danger">welke dagen/tijden</button>
-<button type="button" class="btn btn-outline-warning">vaste dagen/tijden</button>
-<br />
 
                         <div class="card">
                           <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>

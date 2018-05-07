@@ -29,7 +29,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
+                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required>
 
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback">
@@ -43,7 +43,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gebruikersnaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -109,7 +109,7 @@
                             <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam') }}</label>
 
                             <div class="col-md-6">
-                                <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ old('street') }}" required autofocus>
+                                <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ old('street') }}" required>
 
                                 @if ($errors->has('street'))
                                     <span class="invalid-feedback">
@@ -123,7 +123,7 @@
                             <label for="streetnumber" class="col-md-4 col-form-label text-md-right">{{ __('Straatnummer') }}</label>
 
                             <div class="col-md-6">
-                                <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ old('streetnumber') }}" required autofocus>
+                                <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ old('streetnumber') }}" required>
 
                                 @if ($errors->has('streetnumber'))
                                     <span class="invalid-feedback">
@@ -137,7 +137,7 @@
                             <label for="zipcode" class="col-md-4 col-form-label text-md-right">{{ __('Postcode') }}</label>
 
                             <div class="col-md-6">
-                                <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
+                                <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ old('zipcode') }}" required>
 
                                 @if ($errors->has('zipcode'))
                                     <span class="invalid-feedback">
@@ -151,7 +151,7 @@
                             <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Woonplaats') }}</label>
 
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ old('place') }}" required autofocus>
+                                <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ old('place') }}" required>
 
                                 @if ($errors->has('place'))
                                     <span class="invalid-feedback">
@@ -188,6 +188,9 @@
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Toevoegen') }}
+                                </button>
+                                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+                                    {{ __('Terug') }}
                                 </button>
                             </div>
                         </div>

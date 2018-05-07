@@ -63,11 +63,6 @@ Route::prefix('posts')->group(function () {
 
   Route::post('/{post}/comments', 'CommentsController@store');
 });
-/* Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');
-Route::get('/login', 'SessionsController@create');
-Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy'); //Ook in browser: senior.lar/logout logd je uit */
 
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');

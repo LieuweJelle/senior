@@ -41,16 +41,14 @@
     @endforeach
     </tbody>
 </table> 
-<form method="GET" action="{{ route('users.create') }}">
 <div class="form-group row mb-0">
   <div class="col-md-6 offset-md-4">
-      <button type="submit" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" onclick="location.href='{{ route('users.create') }}'">
           {{ __('Toevoegen Senioren en Vrijwilligers') }}
       </button>
-      <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+      <button type="button" class="btn btn-outline-primary" onclick="location.href='{{ url('/') }}'">
           {{ __('Terug') }}
       </button>
   </div>
 </div>
-</form>
 @endsection

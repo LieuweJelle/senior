@@ -12,7 +12,7 @@
                         <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam') }}</label>
 
                         <div class="col-md-6">
-                            <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ $user->firstname }}" disabled>
+                            <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ $user->firstname }}" readonly>
 
                             @if ($errors->has('firstname'))
                                 <span class="invalid-feedback">
@@ -26,7 +26,7 @@
                         <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
 
                         <div class="col-md-6">
-                            <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ $user->lastname }}" disabled>
+                            <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ $user->lastname }}" readonly>
 
                             @if ($errors->has('lastname'))
                                 <span class="invalid-feedback">
@@ -40,7 +40,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gebruikersnaam') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" disabled>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" readonly>
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback">
@@ -54,7 +54,7 @@
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" disabled>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" readonly>
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback">
@@ -68,7 +68,7 @@
                         <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Telefoon') }}</label>
 
                         <div class="col-md-6">
-                            <input id="telephone" type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" value="{{ $user->telephone }}" disabled>
+                            <input id="telephone" type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" value="{{ $user->telephone }}" readonly>
 
                             @if ($errors->has('telephone'))
                                 <span class="invalid-feedback">
@@ -82,7 +82,7 @@
                         <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Straatnaam') }}</label>
 
                         <div class="col-md-6">
-                            <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ $user->street }}" disabled>
+                            <input id="street" type="text" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ $user->street }}" readonly>
 
                             @if ($errors->has('street'))
                                 <span class="invalid-feedback">
@@ -96,7 +96,7 @@
                         <label for="streetnumber" class="col-md-4 col-form-label text-md-right">{{ __('Straatnummer') }}</label>
 
                         <div class="col-md-6">
-                            <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ $user->streetnumber }}" disabled>
+                            <input id="streetnumber" type="text" class="form-control{{ $errors->has('streetnumber') ? ' is-invalid' : '' }}" name="streetnumber" value="{{ $user->streetnumber }}" readonly>
 
                             @if ($errors->has('streetnumber'))
                                 <span class="invalid-feedback">
@@ -110,7 +110,7 @@
                         <label for="zipcode" class="col-md-4 col-form-label text-md-right">{{ __('Postcode') }}</label>
 
                         <div class="col-md-6">
-                            <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ $user->zipcode }}" disabled>
+                            <input id="zipcode" type="text" class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode" value="{{ $user->zipcode }}" readonly>
 
                             @if ($errors->has('zipcode'))
                                 <span class="invalid-feedback">
@@ -124,7 +124,7 @@
                         <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Woonplaats') }}</label>
 
                         <div class="col-md-6">
-                            <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ $user->place }}" disabled>
+                            <input id="place" type="text" class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" value="{{ $user->place }}" readonly>
 
                             @if ($errors->has('place'))
                                 <span class="invalid-feedback">

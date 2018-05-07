@@ -694,27 +694,26 @@ Psy Shell v0.8.18 (PHP 7.2.2 — cli) by Justin Hilemanan
      ],
    }
 >>>
+-->
+
+
+DODE CODE
 
 register:
-                        <div class="form-check">
-                          <!-- <?php $roles = \App\Role::all()->pluck('name'); ?>
-                          @foreach($roles as $role)
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck{{ $role->id }}">
-                            <label class="form-check-label" for="defaultCheck{{ $role->id }}">
-                              {{ __($role->name) }}
-                            </label>
-                          @endforeach
-                        </div>
+<div class="form-check">
+<?php $roles = \App\Role::all()->pluck('name'); ?>
+  @foreach($roles as $role)
+    <input class="form-check-input" type="checkbox" value="" id="defaultCheck{{ $role->id }}">
+    <label class="form-check-label" for="defaultCheck{{ $role->id }}">
+      {{ __($role->name) }}
+    </label>
+  @endforeach
+</div>
+
 web:
-
-//Route::resource('/roles', 'RoleController');
-
 /* Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');*/
-Route::get('/register2', function () {
-    return view('auth.register2');
-});
-
-/*Route::get('/login', 'SessionsController@create');
+Route::post('/register', 'RegistrationController@store');
+Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy'); //Ook in browser: senior.lar/logout logd je uit */
+
