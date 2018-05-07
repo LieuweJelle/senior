@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<h1>Verwijderen</h1>
 {{-- @include('agendas.all') --}}
     <div class="card">
         <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
@@ -64,7 +65,7 @@ Van:&nbsp;<input type="text" class="span2" value="{{ $record1 }}" id="dpt1" name
                 </button>
                 <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ back() }}'">
                     {{ __('Terug') }}
-                </button><br />
+                </button><br /><br />
             </div>
         </div>
     </form>

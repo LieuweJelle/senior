@@ -41,6 +41,7 @@ under construction! */
 
 Route::resource('/agendas', 'AgendaController');
 Route::get('agendas/create', 'AgendaController@create');
+Route::get('agendas/{id}', 'AgendaController@show');
 Route::post('agendas/{id}/store', 'AgendaController@store');
 Route::get('agendas/{id}/edit', 'AgendaController@edit');
 Route::get('agendas/{id}/delete', 'AgendaController@delete');

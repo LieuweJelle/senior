@@ -54,7 +54,7 @@ class UserController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'telephone' => $request['telephone'],
-            'password' => Hash::make($request['password']), //bcrypt()
+            'password' => Hash::make($request['password']),
             'street' => $request['street'],
             'streetnumber' => $request['streetnumber'],
             'zipcode' => $request['zipcode'],

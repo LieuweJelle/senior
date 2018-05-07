@@ -65,10 +65,10 @@ class AgendaController extends Controller
         $agenda->user_id = $user_id;
         $agenda->role_id = $role_id;
         $agenda->save();
-        //return redirect()->action('AgendaController@show');
-        $agendas = User::find($user_id)->agendas;
-        $roles = User::find($user_id)->roles;
+
         $user = User::find($user_id);
+        $agendas = $user->agendas;
+        $roles = $user->roles;
         return view('agendas.show', compact('agendas', 'roles', 'user'));
     }
 
@@ -80,9 +80,9 @@ class AgendaController extends Controller
      */
     public function show($id)
     {
-        $agendas = User::find($id)->agendas;
-        $roles = User::find($id)->roles;
         $user = User::find($id);
+        $agendas = $user->agendas;
+        $roles = $user->roles;
         return view('agendas.show', compact('agendas', 'roles', 'user'));
     }
 
@@ -100,10 +100,13 @@ class AgendaController extends Controller
       $m = (strlen($agenda->m)==1) ? '0'.$agenda->m : $agenda->m;
       $record1 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->start,0,5);
       $record2 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->stop,0,5);
-      $roles = Role::all();
-      $role = $agenda->role_id;
-      $user = $agenda->user_id;
-      return view('agendas.edit', compact('agenda', 'roles', 'role', 'user', 'record1', 'record2'));
+      $user = User::find($agenda->user_id);
+      $agendas = $user->agendas;
+      $roles = $user->roles;
+      //$roles = Role::all();
+      //$role = $agenda->role_id; 'role',
+      //$user = $agenda->user_id;
+      return view('agendas.edit', compact('agenda', 'agendas', 'roles', 'user', 'record1', 'record2'));
 
     }
 
@@ -137,8 +140,12 @@ class AgendaController extends Controller
         $agenda->role_id = $role_id;
         $agenda->save();
         //$agenda->update($request->all());
+        $user = User::find($user_id);
+        $agendas = $user->agendas;
+        $roles = $user->roles;
+        return view('agendas.show', compact('agendas', 'roles', 'user'));
         
-        return redirect()->route('agendas.index');
+        //return redirect()->route('agendas.index');
 
     }
 
