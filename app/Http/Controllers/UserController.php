@@ -47,8 +47,20 @@ class UserController extends Controller
      */
     public function store(StoreUser $request) 
     {
-        $user = User::create($request->all());
-        
+        //$user = User::create($request->all(), ['password' => Hash::make($request['password'])]);  // geen fout! werkt niet.
+         $user = User::create([
+            'firstname' => $request['firstname'],
+            'lastname' => $request['lastname'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'telephone' => $request['telephone'],
+            'password' => Hash::make($request['password']), //bcrypt()
+            'street' => $request['street'],
+            'streetnumber' => $request['streetnumber'],
+            'zipcode' => $request['zipcode'],
+            'place' => $request['place'],
+            'intro' => $request['intro'],
+        ]);
         if(!empty($request['check_list'])) {
             foreach($request['check_list'] as $selected) {
                 $user->roles()->attach($selected); 
