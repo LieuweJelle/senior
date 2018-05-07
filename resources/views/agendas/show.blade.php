@@ -13,7 +13,7 @@
             <input type="hidden" value="{{ $user->id }}" id="hidden" name="hidden">
             @foreach($roles as $role)
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" name="radio_list">
+                <input class="form-check-input" type="radio" value="{{ $role->id }}" id="defaultCheck{{ $role->id }}" name="radio_list" required>
                 <label class="form-check-label" for="defaultCheck{{ $role->id }}">
                   {{ __($role->name) }}
                 </label>
@@ -63,11 +63,12 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Opslaan') }}
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ back() }}'">
+                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
                     {{ __('Terug') }}
                 </button>
             </div>
         </div><br /><br />
+        
     </div>
     </form>
 </div>

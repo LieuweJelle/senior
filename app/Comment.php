@@ -2,8 +2,6 @@
 
 namespace App;
 
-//use Illuminate\Database\Eloquent\Model;
-
 class Comment extends Model
 {
     public function post()
@@ -11,7 +9,7 @@ class Comment extends Model
       return $this->belongsTo(Post::class);
     }
     
-    public function user() // $comment->user->name
+    public function user()
     {
       return $this->belongsTo(User::class);
     }

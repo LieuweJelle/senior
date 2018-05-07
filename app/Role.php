@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Role extends Model
 {
 
@@ -23,7 +21,7 @@ class Role extends Model
    
     public function getRouteKeyName()
     {
-        return 'name'; // http: //senior.lar/users/roles/Huishoudelijke hulp
+        return 'name'; // http://senior.lar/users/roles/Huishoudelijke hulp
     }
     
 }

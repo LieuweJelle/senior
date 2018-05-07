@@ -2,19 +2,16 @@
 
 namespace App;
 
-//use Illuminate\Database\Eloquent\Model; Own Model class!
 use Carbon\Carbon;
 
 class Post extends Model
 {
-    //protected $fillable = ['title', 'body']; protected guarded = [];
-    
     public function comments()
     {
-        return $this->hasMany(Comment::class); // ('App\Comment')
+        return $this->hasMany(Comment::class); 
     }
     
-    public function user() // $post->user->name OR!! $comment->post->user
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -26,15 +23,7 @@ class Post extends Model
 
     public function addComment($body)
     {
-        /*Comment::create([
-          'body' => $body,
-          'post_id' => $this->id,
-          'user_id' => 1
-        ]);*/
-        
         $this->comments()->create(['body' => $body, 'post_id' => $this->id, 'user_id' => 1]);//return 
-        
-        //dd($this->comments);// All comments with this post->id
     }
     
     public function scopeFilter($query, $filters)

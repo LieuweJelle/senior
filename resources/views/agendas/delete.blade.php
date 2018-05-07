@@ -11,6 +11,7 @@
             <form method="POST" action="{{ route('agendas.destroy', ['id' => $agenda->id]) }}">
             @csrf
             @method('DELETE')
+            
             <input type="hidden" value="{{ $user }}" id="hidden" name="hidden">
             @foreach($roles as $role)
             <div class="form-check">
@@ -33,37 +34,37 @@
 
         <div class="card-body">
           <div class="form-check">
-Van:&nbsp;<input type="text" class="span2" value="{{ $record1 }}" id="dpt1" name="dpt1" readonly>
-    <script>
-    $(function(){
-      $('#dpt1').fdatepicker({
-        format: 'dd-mm-yyyy hh:ii',
-        disableDblClickSelection: true,
-        language: 'nl',
-        pickTime: true
-      });
-    });
-    </script>
-&nbsp;&nbsp;&nbsp;&nbsp;Tot:&nbsp;<input type="text" class="span2" value="{{ $record2 }}" id="dpt2" name="dpt2" readonly>
-    <script>
-    $(function(){
-      $('#dpt2').fdatepicker({
-        format: 'dd-mm-yyyy hh:ii',
-        disableDblClickSelection: true,
-        language: 'nl',
-        pickTime: true
-      });
-    });
-    </script>
-    </div>
-</div>
+              Van:&nbsp;<input type="text" class="span2" value="{{ $record1 }}" id="dpt1" name="dpt1" readonly>
+              <script>
+              $(function(){
+                $('#dpt1').fdatepicker({
+                  format: 'dd-mm-yyyy hh:ii',
+                  disableDblClickSelection: true,
+                  language: 'nl',
+                  pickTime: true
+                });
+              });
+              </script>
+              &nbsp;&nbsp;&nbsp;&nbsp;Tot:&nbsp;<input type="text" class="span2" value="{{ $record2 }}" id="dpt2" name="dpt2" readonly>
+              <script>
+              $(function(){
+                $('#dpt2').fdatepicker({
+                  format: 'dd-mm-yyyy hh:ii',
+                  disableDblClickSelection: true,
+                  language: 'nl',
+                  pickTime: true
+                });
+              });
+              </script>
+              </div>
+          </div>
     
          <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
                     {{ __('Definitief verwijderen') }}
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ back() }}'">
+                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
                     {{ __('Terug') }}
                 </button><br /><br />
             </div>

@@ -28,16 +28,8 @@
                 <td>{{ $agenda->created_at }}</td>
                 <td>{{ ($agenda->updated_at == $agenda->created_at) ? '' : $agenda->updated_at }}</td>
                 <td>
-
-                    <!-- show the nerd (uses the show method found at GET /nerds/{id}
-                    <a class="btn btn-small btn-success" href="/agendas/{{ $agenda->id }}">Show</a> -->
-        
-                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
                     <a class="btn btn-small btn-info" href="/agendas/{{ $agenda->id }}/edit">Edit</a>
-
-                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                     <a class="btn btn-small btn-danger" href="/agendas/{{ $agenda->id }}/delete">Delete</a>
-
                 </td>
             </tr>
         @endforeach

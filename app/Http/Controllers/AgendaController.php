@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +23,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        /*$agendas = Agenda::all();
-        $roles = Role::all();
-        //$user = User::all();
-        return view('agendas.index', compact('agendas', 'roles', 'user'));*/
+      //
     }
 
     /**
@@ -53,9 +52,8 @@ class AgendaController extends Controller
         $start = substr($elem1,11,5);
         $stop = substr($elem2,11,5);
         $role_id = $request->input('radio_list');
-        $user_id = $request->input('hidden');//auth()->id();
-        //dd($d.'-'.$m.'-'.$y.', '.$start.' '.$stop.': '.$role_id.',  '.$user_id);
-        //$agenda = Agenda::create($request->all());
+        $user_id = $request->input('hidden');
+
         $agenda = new Agenda();
         $agenda->d = $d;
         $agenda->m = $m;
@@ -95,19 +93,15 @@ class AgendaController extends Controller
      
     public function edit($id)
     {
-      $agenda = Agenda::find($id);
-      $d = (strlen($agenda->d)==1) ? '0'.$agenda->d : $agenda->d;
-      $m = (strlen($agenda->m)==1) ? '0'.$agenda->m : $agenda->m;
-      $record1 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->start,0,5);
-      $record2 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->stop,0,5);
-      $user = User::find($agenda->user_id);
-      $agendas = $user->agendas;
-      $roles = $user->roles;
-      //$roles = Role::all();
-      //$role = $agenda->role_id; 'role',
-      //$user = $agenda->user_id;
-      return view('agendas.edit', compact('agenda', 'agendas', 'roles', 'user', 'record1', 'record2'));
-
+        $agenda = Agenda::find($id);
+        $d = (strlen($agenda->d)==1) ? '0'.$agenda->d : $agenda->d;
+        $m = (strlen($agenda->m)==1) ? '0'.$agenda->m : $agenda->m;
+        $record1 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->start,0,5);
+        $record2 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->stop,0,5);
+        $user = User::find($agenda->user_id);
+        $agendas = $user->agendas;
+        $roles = $user->roles;
+        return view('agendas.edit', compact('agenda', 'agendas', 'roles', 'user', 'record1', 'record2'));
     }
 
     /**
@@ -127,9 +121,8 @@ class AgendaController extends Controller
         $start = substr($elem1,11,5);
         $stop = substr($elem2,11,5);
         $role_id = $request->input('radio_list');
-        $user_id = $request->input('hidden');//auth()->id();
-        //dd($d.'-'.$m.'-'.$y.', '.$start.' '.$stop.': '.$role_id.',  '.$user_id);
-        //$agenda = Agenda::create($request->all());
+        $user_id = $request->input('hidden');
+        
         $agenda = Agenda::find($id);
         $agenda->d = $d;
         $agenda->m = $m;
@@ -139,14 +132,11 @@ class AgendaController extends Controller
         $agenda->user_id = $user_id;
         $agenda->role_id = $role_id;
         $agenda->save();
-        //$agenda->update($request->all());
+        
         $user = User::find($user_id);
         $agendas = $user->agendas;
         $roles = $user->roles;
         return view('agendas.show', compact('agendas', 'roles', 'user'));
-        
-        //return redirect()->route('agendas.index');
-
     }
 
     /**
@@ -157,28 +147,25 @@ class AgendaController extends Controller
      */
     public function delete($id)
     {
-      $agenda = Agenda::find($id);
-      $d = (strlen($agenda->d)==1) ? '0'.$agenda->d : $agenda->d;
-      $m = (strlen($agenda->m)==1) ? '0'.$agenda->m : $agenda->m;
-      $record1 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->start,0,5);
-      $record2 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->stop,0,5);
-      $roles = Role::all();
-      $user = $agenda->user_id;
-      return view('agendas.delete', compact('agenda', 'roles', 'user', 'record1', 'record2'));
-        /*$agendas = User::find($id)->agendas;
-        $roles = User::find($id)->roles;
-        $user = User::find($id);
-        return view('agendas.delete', compact('agendas', 'roles', 'user'));*/
-        
+        $agenda = Agenda::find($id);
+        $d = (strlen($agenda->d)==1) ? '0'.$agenda->d : $agenda->d;
+        $m = (strlen($agenda->m)==1) ? '0'.$agenda->m : $agenda->m;
+        $record1 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->start,0,5);
+        $record2 = $d.'-'.$m.'-'.$agenda->y.' '.substr($agenda->stop,0,5);
+        $user_id = $agenda->user_id;
+        $user = User::find($user_id);
+        $roles = $user->roles;
+        return view('agendas.delete', compact('agenda', 'roles', 'user', 'record1', 'record2'));
     }
+    
     public function destroy(Request $request, $id)
     {
         $agenda = Agenda::find($id);
+        $user_id = $agenda->user_id;
         $agenda->delete();
-        $user_id = $request->input('hidden');
-        $agendas = User::find($user_id)->agendas;
-        $roles = User::find($user_id)->roles;
         $user = User::find($user_id);
+        $agendas = $user->agendas;
+        $roles = $user->roles;
         return view('agendas.show', compact('agendas', 'roles', 'user'));
         
     }

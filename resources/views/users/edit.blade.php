@@ -167,6 +167,9 @@
                                 <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ route('agendas.show', [ 'id' => $user->id ]) }}'">
                                     {{ __('Mijn Agenda') }}
                                 </button>
+                                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+                                    {{ __('Terug') }}
+                                </button>
                             </div>
                         </div>
                     </form>
