@@ -189,9 +189,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Toevoegen') }}
                                 </button>
-                                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+                                <a href="/gebruikers" class="btn btn-outline-primary" onclick="history.back()">
                                     {{ __('Terug') }}
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -64,9 +64,9 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Definitief verwijderen') }}
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+                <a href="/agendas/{{$user->id}}/" class="btn btn-outline-primary" onclick="history.back()">
                     {{ __('Terug') }}
-                </button><br /><br />
+                </a><br /><br />
             </div>
         </div>
     </form>

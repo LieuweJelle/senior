@@ -46,9 +46,9 @@
       <button type="button" class="btn btn-primary" onclick="location.href='{{ route('users.create') }}'">
           {{ __('Toevoegen Senioren en Vrijwilligers') }}
       </button>
-      <button type="button" class="btn btn-outline-primary" onclick="location.href='{{ url('/') }}'">
+      <a href="/"  class="btn btn-outline-primary" onclick="location.href='{{ url('/') }}'">
           {{ __('Terug') }}
-      </button>
+      </a>
   </div>
 </div>
 @endsection

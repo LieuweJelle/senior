@@ -63,9 +63,9 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Opslaan') }}
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+                <a href="/users/{{$user->id}}/edit" class="btn btn-outline-primary">
                     {{ __('Terug') }}
-                </button>
+                </a>
             </div>
         </div><br /><br />
         
