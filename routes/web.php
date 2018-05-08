@@ -11,15 +11,15 @@
 |
 */
 Route::get('/', function () { 
-    $tasks = ['front', 'about', 'practice', 'senior', 'social', 'gebruikers'];
+    $tasks = ['front', 'senior', 'social', 'gebruikers'];
     return view('welcome', compact('tasks'));
 });
 Route::get('/front', function () { 
-    $tasks = ['about', 'practice', 'senior', 'social', 'gebruikers'];
+    $tasks = ['senior', 'social', 'gebruikers'];
     return view('front', compact('tasks'));
 });
-Route::view('about', 'about');
-Route::view('practice', 'practice');
+//Route::view('about', 'about');
+//Route::view('practice', 'practice');
 Route::view('senior', 'senior');
 Route::view('social', 'social');
 
