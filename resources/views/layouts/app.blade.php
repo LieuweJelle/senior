@@ -25,15 +25,6 @@
 </head>
 <body>
     <div id="app">
-    <script>
-/*
-if(screen.width > 700) {
-	document.getElementById("app").style.width = "100%"; 
-	document.getElementById("app").style.height = "100%";
-	document.getElementById("app").style.background = "url({{ asset('img/hart.jpg') }}) repeat left top";
-} else {
-}*/
-</script>
 
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
