@@ -51,7 +51,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(Task $task) //Task::find('something')
     {
         return $task;
         //return view('tasks.show', compact('task'));

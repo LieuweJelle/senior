@@ -11,11 +11,11 @@
 |
 */
 Route::get('/', function () { 
-    $tasks = ['front', 'senior', 'social', 'gebruikers'];
+    $tasks = ['front', 'senior', 'social', 'medewerkers', 'blog'];
     return view('welcome', compact('tasks'));
 });
 Route::get('/front', function () { 
-    $tasks = ['senior', 'social', 'gebruikers'];
+    $tasks = ['senior', 'social', 'medewerkers', 'blog'];
     return view('front', compact('tasks'));
 });
 //Route::view('about', 'about');
@@ -23,11 +23,15 @@ Route::get('/front', function () {
 Route::view('senior', 'senior');
 Route::view('social', 'social');
 
-Route::get('/gebruikers', 'UserController@index');
+Route::get('/medewerkers', 'UserController@index');
+Route::get('/blog', 'PostsController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index'); //->name('home');
+
+Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/{task}', 'TasksController@show');
 
 Route::resource('/users', 'UserController');
 Route::get('users/{id}/delete', 'UserController@delete');
@@ -70,5 +74,3 @@ Route::prefix('posts')->group(function () {
   Route::post('/{post}/comments', 'CommentsController@store');
 });
 
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');

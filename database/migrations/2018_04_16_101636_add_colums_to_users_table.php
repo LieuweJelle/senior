@@ -21,7 +21,6 @@ class AddColumsToUsersTable extends Migration
             $table->string('zipcode')->nullable();
             $table->string('place')->nullable();
             $table->integer('telephone')->nullable();
-            $table->integer('role_id')->nullable()->after('id');
         });
     }
 
@@ -40,7 +39,6 @@ class AddColumsToUsersTable extends Migration
             $table->dropColumn('zipcode');
             $table->dropColumn('place');
             $table->dropColumn('telephone');
-            $table->dropColumn('role_id');
        });
     }
 }

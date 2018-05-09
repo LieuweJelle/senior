@@ -25,8 +25,8 @@
                 <td>{{ $agenda->y }}</td>
                 <td>{{ $agenda->start }}</td>
                 <td>{{ $agenda->stop }}</td>
-                <td>{{ $agenda->created_at }}</td>
-                <td>{{ ($agenda->updated_at == $agenda->created_at) ? '' : $agenda->updated_at }}</td>
+                <td>{{ $agenda->created_at->format('d-m-Y H:i:s') }}</td>
+                <td>{{ ($agenda->updated_at == $agenda->created_at) ? '' : $agenda->updated_at->format('d-m-Y H:i:s') }}</td>
                 <td>
                     <a class="btn btn-small btn-info" href="/agendas/{{ $agenda->id }}/edit">Edit</a>
                     <a class="btn btn-small btn-danger" href="/agendas/{{ $agenda->id }}/delete">Delete</a>
