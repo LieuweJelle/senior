@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIntroToUsersTable extends Migration
+class AddTitleToCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddIntroToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('intro')->nullable();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->string('title')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddIntroToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('intro');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropColumn('title');
         });
     }
 }

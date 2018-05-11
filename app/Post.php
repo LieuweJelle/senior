@@ -21,9 +21,9 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function addComment($body)
+    public function addComment($title, $body)
     {
-        $this->comments()->create(['body' => $body, 'post_id' => $this->id, 'user_id' => 1]);//return 
+        $this->comments()->create(['title' => $title, 'body' => $body, 'post_id' => $this->id, 'user_id' => 1]);//return 
     }
     
     public function scopeFilter($query, $filters)

@@ -2,8 +2,6 @@
 
 @section('content')
   @foreach($posts as $post)
-  <div class="card">
-    @include('posts.post')
-  </div>
+      @include('posts.post')
   @endforeach
 @endsection

@@ -14,8 +14,8 @@ class AddColumnsToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('subtitle');
-            $table->Text('subbody');
+            $table->string('subtitle')->nullable();
+            $table->Text('subbody')->nullable();
             $table->string('cover_image');
             $table->boolean('disabled')->default(false);
         });

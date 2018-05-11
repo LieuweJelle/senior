@@ -1,51 +1,58 @@
 @extends('posts.postmaster')
 
 @section('content')
-  <div class="col-sm-8 blog-main">
-    <h1>{{ $post->title }}</h1>
-    @if(count($post->tags))
-    <ul class="list-group">
+<div class="card">
+  <h2><a href="/posts/{{ $post->id }}" class="black">{{ $post->title }}</a></h2>
+  <h3 style="color:darkred">
+  @if(count($post->tags))
       @foreach($post->tags as $tag)
-        <li class="list-group-item">
-          <strong>
-            <a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a>
-          </strong>
-        </li>
+      {{-- <a href="/posts/tags/{{ $tag->name }}"></a> --}}
+          {{ ", ".$tag->name }}
       @endforeach
-      </ul>    
-    @endif
-    {{ $post->body }} 
-    <hr />
-    <div class="comments">
-      <ul class="list-group">
-      @foreach($post->comments as $comment)
-        <li class="list-group-item">
-          <strong>
-            {{ $comment->created_at->diffForHumans() }}:&nbsp; <!--  -->
-          </strong>
-          {{ $comment->body }}
-        </li>
-      @endforeach
-      </ul><!---->
-    </div>
-    <hr />
-    <div class="card">
-      <div class="card-block">
-        <form method="POST" action="/posts/{{ $post->id }}/comments">
-          @csrf
-          {{-- @method('PATCH') --}}
-          <!--<div class="form-group">
-            <input type="text" name="title" id="title" placeholder="Titel" class="form-control" required></textarea>
-          </div>-->
-          <div class="form-group">
-            <textarea name="body" id="body" placeholder="Comment" class="form-control" required></textarea>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary">Add Comment</button>
-          </div>
-        </form>
-        @include('layouts.error')
+  @endif
+  </h3>
+
+  @if($post->subtitle)
+      <h5>{{ $post->created_at->format('d-m-Y H:i:s') }}</h5>
+  @else
+      <h5>{{ $post->subtitle }} , {{ $post->created_at->format('d-m-Y H:i:s') }}</h5>
+  @endif
+
+  {{-- @if(isBlogger()) {
+      <span class="right"><a href="{{ updateArticle.php id=> $post->id }}" class="x">w</a></span>
+  @endif --}}
+  <div>{!!  $post->body !!}</div>
+  @if($post->cover_image) 
+      <div class="fakeimg">
+          <img src="/storage/cover_images/{{ $post->cover_image }}" width="760" alt="image" />
       </div>
-    </div>
-  </div>  
+  @endif
+  <p>Vul aan... en/of</p>
+  
+  @foreach($post->comments as $comment)
+      <div class="subcard">
+          <h3 style="color:darkred">{{ $comment->title }}</h3><h5>{{ $comment->created_at->format('d-m-Y H:i:s') }}</h5>
+          <div>{{ $comment->body }}</div><span class="right"><a href="delete.php?id='.$blogReaction['id'].'" class="x">x</a></span>
+      </div>
+  @endforeach
+  @if(!$post->disabled)
+<!--       <button type="button" id="button10" class="button button10">reageer</button><br />
+if allowed -->
+      <div id="react" class="react">
+          <form method="post" action="/posts/{{ $post->id }}/comments" name="form1" class="form1">
+              @csrf
+              <span class="namefield">Titel Reactie</span>
+              <input type="text" id="txt" size="43" maxlength="50" name="title" value="" autocomplete="off" /><br />
+              <div id="fieldspace"></div>
+              <span class="namefield">Text Reactie:</span><br />
+              <textarea class="form-control" rows="3" cols="75" id="comment" name="body"></textarea><br />
+              <button type="submit" name="submit" id="button5">Add Comment</button>
+          </form>
+          @include('layouts.error')
+      </div>
+<!-- else -->
+
+<!-- endif -->
+  @endif
+</div>
 @endsection

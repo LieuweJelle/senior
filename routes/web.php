@@ -36,6 +36,7 @@ Route::get('/tasks/{task}', 'TasksController@show');
 Route::resource('/users', 'UserController');
 Route::get('users/{id}/delete', 'UserController@delete');
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 /*
 Route::prefix('users')->group(function () {
   Route::post('/', 'UserController@index');
@@ -63,11 +64,14 @@ Route::get('agendas/{id}/delete', 'AgendaController@delete');
 Route::get('/users/roles/{role}', 'RolesController@index');
 
 //http://senior.lar/posts?month=April&year=2018 works.
+Route::resource('/posts', 'PostsController');
 Route::prefix('posts')->group(function () {
   Route::get('/', 'PostsController@index');
   Route::get('/create', 'PostsController@create');
   Route::post('/', 'PostsController@store');
   Route::get('/{post}', 'PostsController@show');
+  Route::get('/edit/{id}', 'PostsController@edit');
+  Route::post('/{id}', 'PostsController@update');
 
   Route::get('/tags/{tag}', 'TagsController@index');
 

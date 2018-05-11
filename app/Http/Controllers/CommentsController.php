@@ -10,7 +10,7 @@ class CommentsController extends Controller
 {
     public function store(Post $post)
     {
-        $this->validate(request(), ['body' => 'required|string|min:2']);
+        $this->validate(request(), ['body' => 'required|string|min:2', 'title'=> 'nullable|string']);
         
         /*Comment::create([
           'body' => request('body'),
@@ -19,7 +19,7 @@ class CommentsController extends Controller
         ]);*/
         //$post->addComment(request(),['body' => 'body', 'user_id' => 1]);
         
-        $post->addComment(request('body')); //?? UC
+        $post->addComment(request('title'), request('body')); //?? UC
         return back();
     }
 }
