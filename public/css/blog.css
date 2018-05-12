@@ -264,3 +264,16 @@ h4 {
   margin-top: 0.33em;
   margin-bottom: 1.33em;
 }
+/* flash message for 4 secs. */
+#flash-message {
+    bottom: 20px;
+    position: absolute;
+    right: 20px;
+    z-index: 10;
+    animation: flash-message 4s forwards;
+}
+
+@keyframes flash-message {
+    0%   {opacity: 1;}
+    100% {opacity: 0; display:none;}
+}

@@ -53,7 +53,7 @@ class PostsController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
-        
+        // auth()->user()->publish(new Post(request(['title', 'body', 'subtitle', 'subbody', auth()->user()->id, $fileNameToStore]))); ???
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
@@ -68,7 +68,11 @@ class PostsController extends Controller
                 $post->tags()->attach($selected); 
             }
         }
-       
+        
+        session()->flash(
+          'message', 'Your post has now been published.'
+        );
+        
         return redirect('/posts')->with('success', 'Post Created');
     }
     

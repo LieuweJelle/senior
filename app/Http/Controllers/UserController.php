@@ -25,6 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        //return session('message');
+        
         $users = User::all();
         return view('users.index', compact('users'));
     }
@@ -67,6 +69,8 @@ class UserController extends Controller
             }
         }
 
+        session()->flash('message', 'Thanx for signing up!'); // request()->session();
+        
         return redirect()->action('UserController@index');
     }
 

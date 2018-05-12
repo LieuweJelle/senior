@@ -65,13 +65,18 @@
                                     </form>
                                 </div>
                             </li>
-                            <li><a class="nav-link" href="/register2">{{ __('My profile') }}</a></li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
 
+        @if($flash = session('message'))
+            <div class="alert alert-success" role="alert">
+              {{ $flash }}
+            </div>
+        @endif
+        
         <main class="py-4">
             @yield('content')
         </main>
