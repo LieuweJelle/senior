@@ -135,7 +135,7 @@ p.after {  position:relative;
 }
 .subcard {
   background-color: white; border:1px solid lightgrey;
-  padding: 20px;
+  padding: 0px 20px;
   margin: 5px 10px;
 }
 
@@ -251,4 +251,16 @@ h4 {
 .h5-right {
   text-align:right; display:inline-block; float:right;  margin-top: 0.66em;
   margin-bottom: 0.66em;
+}
+.h5-left-comment {
+  text-align:left; display:inline-block;  margin-top: 0.22em;
+  margin-bottom: 0.22em;
+}
+.h5-right-comment {
+  text-align:right; display:inline-block; float:right;  margin-top: 0.22em;
+  margin-bottom: 0.22em;
+}
+.comm {
+  margin-top: 0.33em;
+  margin-bottom: 1.33em;
 }

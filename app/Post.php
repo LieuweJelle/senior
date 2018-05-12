@@ -26,6 +26,13 @@ class Post extends Model
         $this->comments()->create(['title' => $title, 'body' => $body, 'post_id' => $this->id, 'user_id' => 1]);//return 
     }
     
+    public function disableComment($id)
+    {
+        /*$post = Post::find($id);
+        $post->disabled = true;
+        return $post->save();*/
+    }
+    
     public function scopeFilter($query, $filters)
     {
       if(isset($filters['month'])&& $month = $filters['month'])
