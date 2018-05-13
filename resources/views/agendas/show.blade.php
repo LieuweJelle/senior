@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Toevoegen</h1>
+    <h1>Toevoegen voor {{ $user->firstname }} {{ $user->lastname }}</h1>
     @include('agendas.all')
     <div class="card">
         <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
@@ -32,7 +32,7 @@
 
         <div class="card-body">
             <div class="form-check">
-                Van:&nbsp;<input type="text" class="span2" value="11-05-2018 09:00" id="dpt1" name="dpt1">
+                Van:&nbsp;<input type="text" class="span2" value="14-05-2018 09:00" id="dpt1" name="dpt1">
                 <script>
                 $(function(){
                   $('#dpt1').fdatepicker({
@@ -44,7 +44,7 @@
                 });
                 </script>
                 
-                &nbsp;&nbsp;&nbsp;&nbsp;Tot:&nbsp;<input type="text" class="span2" value="11-05-2018 17:00" id="dpt2" name="dpt2">
+                &nbsp;&nbsp;&nbsp;&nbsp;Tot:&nbsp;<input type="text" class="span2" value="14-05-2018 17:00" id="dpt2" name="dpt2">
                 <script>
                 $(function(){
                   $('#dpt2').fdatepicker({

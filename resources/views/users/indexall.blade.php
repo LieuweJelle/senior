@@ -33,17 +33,23 @@
             <td>{{ $user->zipcode }}</td>
             <td>{{ $user->place }}</td>
             <td>{{ $user->intro }}</td>
-   <td><table><tbody>
-   <tr>
-@foreach ($user->roles as $role)
-       <td>{{ $role->name }}</td>
-<td><table><tbody><tr>
-@foreach ($role->agendas as $agenda)
-        <td>{{ $agenda->d.'-'.$agenda->m.'-'.$agenda->y }}<br />{{ $agenda->start.' '.$agenda->stop }}</td>
-@endforeach
-</tr></tbody></table></td>
-@endforeach
-</tr></tbody></table></td>
+            <td><table><tbody><tr>
+                @foreach ($user->roles as $role)
+                     <td>{{ $role->name }}</td>
+                     <td><table><tbody><tr>
+                        @foreach ($role->agendas as $agenda)
+                            <?php
+                            $d = (strlen($agenda->d)==1) ? '0'.$agenda->d : $agenda->d;
+                            $m = (strlen($agenda->m)==1) ? '0'.$agenda->m : $agenda->m;
+                            ?>
+                            @if($agenda->user_id == $user->id)
+                                <td>{{ $d.'-'.$m.'-'.$agenda->y }}<br />
+                                {{ $agenda->start.' '.$agenda->stop }}</td>
+                            @endif
+                        @endforeach
+                     </tr></tbody></table></td>
+                @endforeach
+            </tr></tbody></table></td>
             <td>
                 <a class="btn btn-small btn-success" href="/users/{{ $user->id }}">Show this User</a>
                 <a class="btn btn-small btn-info" href="/users/{{ $user->id }}/edit">Edit this User</a>

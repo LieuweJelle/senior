@@ -32,12 +32,11 @@
             <td>{{ $user->zipcode }}</td>
             <td>{{ $user->place }}</td>
             <td>{{ $user->intro }}</td>
-   <td><table><tbody>
-   <tr>
-@foreach ($user->roles as $role)
-       <td>{{ $role->name }}</td>
-@endforeach
-</tr></tbody></table></td>
+            <td><table><tbody><tr>
+                @foreach ($user->roles as $role)
+                    <td>{{ $role->name }}</td>
+                @endforeach
+            </tr></tbody></table></td>
             <td>
                 <a class="btn btn-small btn-success" href="/users/{{ $user->id }}">Show this User</a>
                 <a class="btn btn-small btn-info" href="/users/{{ $user->id }}/edit">Edit this User</a>

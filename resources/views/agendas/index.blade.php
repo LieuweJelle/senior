@@ -31,8 +31,8 @@
             <td>{{ $agenda->id }}</td>
             <td>{{ $agenda->user->name }}</td>
             <td>{{ $agenda->role->name }}</td>
-            <td>{{ $agenda->d }}</td>
-            <td>{{ $agenda->m }}</td>
+            <td>{{ $agenda->d->format('d') }}</td>
+            <td>{{ $agenda->m->format('m') }}</td>
             <td>{{ $agenda->y }}</td>
             <td>{{ $agenda->start }}</td>
             <td>{{ $agenda->stop }}</td>

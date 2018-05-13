@@ -23,12 +23,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        //$agendas = Agenda::all();
-        /*$users = User::all();
-        $agendas = $users->agendas;
-        $roles = $users->roles;
-        return view('agenda.index', compact('users', 'agendas', 'roles'));*/
-
+        //
     }
 
     /**

@@ -15,11 +15,10 @@ class RolesController extends Controller
      */
     public function index(Role $role)
     {
-        // /roles
+        // /roles // return $role; users/roles/administrator
         $users = $role->users;
-        //return $role;
-        //$roles = Role::all();
         return view('users.index', compact('users'));
+        
     }
 
     /**

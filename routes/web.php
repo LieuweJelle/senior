@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () { 
     $tasks = ['front', 'senior', 'social', 'medewerkers', 'blog'];
     return view('welcome', compact('tasks'));
@@ -18,8 +18,7 @@ Route::get('/front', function () {
     $tasks = ['senior', 'social', 'medewerkers', 'blog'];
     return view('front', compact('tasks'));
 });
-//Route::view('about', 'about');
-//Route::view('practice', 'practice');
+
 Route::view('senior', 'senior');
 Route::view('social', 'social');
 
@@ -78,4 +77,3 @@ Route::prefix('posts')->group(function () {
 
   Route::post('/{post}/comments', 'CommentsController@store');
 });
-

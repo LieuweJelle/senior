@@ -22,7 +22,7 @@ class Role extends Model
    
     public function getRouteKeyName()
     {
-        return 'name'; // http://senior.lar/users/roles/Huishoudelijke hulp
+        return 'name'; // http://senior.lar/users/roles/administrator
     }
     
 }

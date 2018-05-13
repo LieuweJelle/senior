@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-<h1>Wijzigen</h1>
-{{-- @include('agendas.all') --}}
+    <h1>Wijzigen voor {{ $user->firstname }} {{ $user->lastname }}</h1>
+    {{-- @include('agendas.all') --}}
     <div class="card">
         <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
         

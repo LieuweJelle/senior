@@ -23,9 +23,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //(Role $role = null)
     {
-        //return session('message');
         $users = \App\User::with('roles')->get(); //User::all();
         return view('users.index', compact('users'));
     }

@@ -53,6 +53,7 @@ class PostsController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
+        
         // auth()->user()->publish(new Post(request(['title', 'body', 'subtitle', 'subbody', auth()->user()->id, $fileNameToStore]))); ???
         $post = new Post;
         $post->title = $request->input('title');
@@ -78,7 +79,7 @@ class PostsController extends Controller
     
     public function show(Post $post) 
     {
-      //$post = Post::find($post->id);
+      //$post = Post::find($post->id); //niet nodig (Post $post)
       return view('posts.show', compact('post'));
     }
     

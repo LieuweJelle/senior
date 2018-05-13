@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-<h1>Verwijderen</h1>
-{{-- @include('agendas.all') --}}
+    <h1>Verwijder deze activiteit voor {{ $user->firstname }} {{ $user->lastname }}</h1>
+    {{-- @include('agendas.all') --}}
     <div class="card">
         <div class="card-header">{{ __('Waarmee wilt u helpen') }}</div>
         
@@ -33,31 +33,31 @@
         <div class="card-header">{{ __('Wanneer wilt u helpen') }}</div>
 
         <div class="card-body">
-          <div class="form-check">
-              Van:&nbsp;<input type="text" class="span2" value="{{ $record1 }}" id="dpt1" name="dpt1" readonly>
-              <script>
-              $(function(){
-                $('#dpt1').fdatepicker({
-                  format: 'dd-mm-yyyy hh:ii',
-                  disableDblClickSelection: true,
-                  language: 'nl',
-                  pickTime: true
+            <div class="form-check">
+                Van:&nbsp;<input type="text" class="span2" value="{{ $record1 }}" id="dpt1" name="dpt1" readonly>
+                <script>
+                $(function(){
+                  $('#dpt1').fdatepicker({
+                    format: 'dd-mm-yyyy hh:ii',
+                    disableDblClickSelection: true,
+                    language: 'nl',
+                    pickTime: true
+                  });
                 });
-              });
-              </script>
-              &nbsp;&nbsp;&nbsp;&nbsp;Tot:&nbsp;<input type="text" class="span2" value="{{ $record2 }}" id="dpt2" name="dpt2" readonly>
-              <script>
-              $(function(){
-                $('#dpt2').fdatepicker({
-                  format: 'dd-mm-yyyy hh:ii',
-                  disableDblClickSelection: true,
-                  language: 'nl',
-                  pickTime: true
+                </script>
+                &nbsp;&nbsp;&nbsp;&nbsp;Tot:&nbsp;<input type="text" class="span2" value="{{ $record2 }}" id="dpt2" name="dpt2" readonly>
+                <script>
+                $(function(){
+                  $('#dpt2').fdatepicker({
+                    format: 'dd-mm-yyyy hh:ii',
+                    disableDblClickSelection: true,
+                    language: 'nl',
+                    pickTime: true
+                  });
                 });
-              });
-              </script>
-              </div>
-          </div>
+                </script>
+            </div>
+         </div>
     
          <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
