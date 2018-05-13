@@ -13,9 +13,10 @@ class Role extends Model
         return $this->belongsToMany(User::class);
     }
     
-     public function agenda()
+     public function agendas()
     {
-        return $this->belongsTo(Agenda::class);
+        //return $this->belongsTo(Agenda::class);
+        return $this->hasMany(Agenda::class);
     }
     
    

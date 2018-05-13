@@ -15,9 +15,10 @@
             <td>Postcode</td>
             <td>Woonplaats</td>
             <td>Introductie</td>
-            <td>Functies</td>
+            <td>Functies en Tijdstippen</td>
+            <td>Bewerkingen</td>
         </tr>
-    </thead>
+    </thead><!-- -->
     <tbody>
     @foreach ($users as $user)
         <tr>
@@ -36,6 +37,11 @@
    <tr>
 @foreach ($user->roles as $role)
        <td>{{ $role->name }}</td>
+<td><table><tbody><tr>
+@foreach ($role->agendas as $agenda)
+        <td>{{ $agenda->d.'-'.$agenda->m.'-'.$agenda->y }}<br />{{ $agenda->start.' '.$agenda->stop }}</td>
+@endforeach
+</tr></tbody></table></td>
 @endforeach
 </tr></tbody></table></td>
             <td>
@@ -54,10 +60,7 @@
       <button type="button" class="btn btn-primary" onclick="location.href='{{ route('users.create') }}'">
           {{ __('Toevoegen Senioren en Vrijwilligers') }}
       </button>
-      <a href="{{ action('UserController@indexall') }}" class="btn btn-outline-primary">
-          {{ __('Alles') }}
-      </a>
-      <a href="/"  class="btn btn-outline-primary">
+      <a href="{{ action('UserController@index') }}" class="btn btn-outline-primary">
           {{ __('Terug') }}
       </a>
   </div>

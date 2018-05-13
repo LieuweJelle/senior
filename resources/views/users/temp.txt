@@ -1,0 +1,4 @@
+ @if($role->id == $user->roles->user_id)
+     {{-- $role->user->agendas->id --}}
+    @endif
+            <td>{{ $user->roles->name }}</td>

@@ -86,15 +86,16 @@ class RegisterController extends Controller
             'place' => $data['place'],
             'intro' => $data['intro'],
         ]);
-        // 3 regels code, 3 dagen werk
-        // remember_token slaat pas op na uitloggen.
-        // intro slaat niet op!! ??
+
         if(!empty($data['check_list'])) {
             $user = User::find($user->id);
             foreach($data['check_list'] as $selected) {
                 $user->roles()->attach($selected); 
             }
         }
+        
+        session()->flash('message', 'Thanx for signing up!'); 
+        
         return $user;
     }
 }

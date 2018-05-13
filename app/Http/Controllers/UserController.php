@@ -26,9 +26,14 @@ class UserController extends Controller
     public function index()
     {
         //return session('message');
-        
-        $users = User::all();
+        $users = \App\User::with('roles')->get(); //User::all();
         return view('users.index', compact('users'));
+    }
+
+    public function indexall()
+    {
+        $users = \App\User::with('roles')->get(); //User::all();
+        return view('users.indexall', compact('users'));
     }
 
     /**
@@ -69,7 +74,7 @@ class UserController extends Controller
             }
         }
 
-        session()->flash('message', 'Thanx for signing up!'); // request()->session();
+        session()->flash('message', 'Bedankt voor het aanmaken van een Vrijwilliger'); // request()->session();
         
         return redirect()->action('UserController@index');
     }

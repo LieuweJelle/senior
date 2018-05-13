@@ -33,6 +33,7 @@ Route::get('/home', 'HomeController@index'); //->name('home');
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
+Route::get('users/indexall', '\App\Http\Controllers\UserController@indexall');
 Route::resource('/users', 'UserController');
 Route::get('users/{id}/delete', 'UserController@delete');
 
