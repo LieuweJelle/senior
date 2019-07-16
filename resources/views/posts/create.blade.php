@@ -18,6 +18,13 @@
             <div id='fieldspace'></div>
             <span class='namefield'>Text Blog:</span><br />
             <textarea class="form-control" rows="10" cols="75" id="textarea" name="body" onfocus="magic();"></textarea><br />
+            <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+            <script>
+                CKEDITOR.replace( 'textarea', {
+                    language: 'nl',
+                    uiColor: '#dddddd'
+                });
+            </script>
             <div id='fieldspace'></div>
             <span class='namefield'>Categorie</span>
             <select name='cat[]' style='width:150px' multiple>
@@ -35,10 +42,34 @@
             <div id='fieldspace'></div>
             <label for="comment">Subtext</label><br />
             <textarea class="form-control" rows="2" cols="75" id="comment2" name="subbody"></textarea><br /><br />
+            <script>
+                CKEDITOR.replace( 'comment2', {
+                    language: 'nl',
+                    uiColor: '#dddddd'
+                });
+            </script>
             <div id='fieldspace'></div>
             <span class='namefield'>Selecteer een foto:</span>
-            <input type="file" name="fileToUpload" id="fileToUpload" /><br /><br />
+            <input type="file" name="cover_image" id="cover_image" /><br /><br />
+            
+<span class="bfh-countries" data-country="US" data-flags="true"></span><br /><br />
+<div class="bfh-selectbox bfh-countries" data-country="NL" data-flags="true">
+  <input type="hidden" value="">
+  <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+    <span class="bfh-selectbox-option input-medium" data-option=""></span>
+    <b class="caret"></b>
+  </a>
+  <div class="bfh-selectbox-options">
+    <input type="text" class="bfh-selectbox-filter">
+    <div role="listbox">
+    <ul role="option">
+    </ul>
+    </div>
+  </div>
+</div><br /><br />
+            
             <button type="submit" name="submit2" id="button2">Publiseren</button>
+            <button type="button" name="back" id="button2" onclick="history.back()">Terug naar Blog</button>
             @include('layouts.error')
         </div>
     </form>

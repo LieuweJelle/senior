@@ -270,7 +270,11 @@ h4 {
     position: absolute;
     right: 20px;
     z-index: 10;
-    animation: flash-message 4s forwards;
+    animation: flash-message 6s forwards;
+    background-color: #ac0000;
+    border: 1px solid black;
+    color:white;
+    padding: 10px;
 }
 
 @keyframes flash-message {

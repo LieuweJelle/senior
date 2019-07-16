@@ -10,8 +10,8 @@
     </h3><br />
     <p><h5 class="h5-left">{{ $post->subtitle }}</h5>
     <h5 class="h5-right">Posted by {{ $post->user->name }} on {{ $post->created_at->format('d-m-Y') }}</h5></p>
-    @if (Auth::check())
-        <span class="right"><a href="{{ url('/posts/edit', [ 'id' => $post->id ]) }}" class="x">w</a></span>
+    @if(Auth::check()) 
+        <span class="right"><a href="{{ action('PostsController@edit', [ 'id' => $post->id ]) }}" class="x">w</a></span>
     @endif
     <div>{!! $post->body !!}</div>
     
@@ -25,10 +25,10 @@
     @foreach($post->comments as $comment)
         <?php $count++; ?>
         <div class="subcard">
-            <p><h5 class="h5-left-comment">{{ $comment->post->user->name }} says</h5>
+            <p><h5 class="h5-left-comment">{{ $comment->user->name }} says</h5>
             <h5 class="h5-right-comment">{{ $comment->created_at->format('d-m-Y H:i:s') }}</h5></p>
             <h3 style="color:darkred">{{ $comment->title }}</h3>
-            <div class="comm">{!! $comment->body !!}</div><span class="right"><a href="#" class="x">x</a></span>
+            <div class="comm">{!! $comment->body !!}</div><span class="right"><a href="{{ action('CommentsController@destroy', [ 'id' => $comment->id ]) }}" class="x">x</a></span>
         </div>
         @if(count($post->comments) >= $count)
             <?php echo '<br />'; ?>
@@ -60,7 +60,7 @@
                 </ul>
             </div>
         @endif --}}
-        <span class="right"><a href="{{ action('PostsController@index') }}" onclick="{{ $post->disableComment($post->id) }}"class="x">x</a></span>
+        <span class="right"><a href="{{ action('PostsController@disableComment', [ 'id' => $post->id ]) }}" class="x">x</a></span>
     @else
         Hier kan niet meer op gereageerd worden.
     @endif

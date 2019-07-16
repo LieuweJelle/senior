@@ -36,6 +36,8 @@ Route::get('users/indexall', '\App\Http\Controllers\UserController@indexall');
 Route::resource('/users', 'UserController');
 Route::get('users/{id}/delete', 'UserController@delete');
 
+Route::get('/users/roles/{role}', 'RolesController@index');
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 /*
 Route::prefix('users')->group(function () {
@@ -61,19 +63,21 @@ Route::get('agendas/{id}/delete', 'AgendaController@delete');
 //Route::get('/users/{user}/agendas', 'AgendaController@show');
 //Route::get('/agendas/{agenda}', 'AgendaController@show');
 
-Route::get('/users/roles/{role}', 'RolesController@index');
-
 //http://senior.lar/posts?month=April&year=2018 works.
+Route::get('/posts/disableComment/{id}', 'PostsController@disableComment');
+Route::post('/posts/search', 'PostsController@search');
 Route::resource('/posts', 'PostsController');
-Route::prefix('posts')->group(function () {
+/*Route::prefix('posts')->group(function () {
   Route::get('/', 'PostsController@index');
   Route::get('/create', 'PostsController@create');
+  Route::get('/edit/{id}', 'PostsController@edit');
   Route::post('/', 'PostsController@store');
   Route::get('/{post}', 'PostsController@show');
-  Route::get('/edit/{id}', 'PostsController@edit');
-  Route::post('/{id}', 'PostsController@update');
+  Route::post('/update/{id}', 'PostsController@update');*/
 
-  Route::get('/tags/{tag}', 'TagsController@index');
+  Route::get('/posts/tags/{tag}', 'TagsController@index');
 
-  Route::post('/{post}/comments', 'CommentsController@store');
-});
+  Route::post('/posts/{post}/comments', 'CommentsController@store');
+  Route::get('/posts/comments/{comment}', 'CommentsController@destroy');
+  
+//});

@@ -6,7 +6,7 @@
         <button type="button" class="button" id="button5" onclick="javascript:location.href='{{ url('/login') }}'">inloggen</button><br />
         <div id='fieldspace'></div>
     @endif
-    <form class="example" action="search.blade.php" method="post">
+    <form class="example" action="/posts/search" method="post">
         <input type="text" placeholder="Search.." name="search" id="search" class="search">
         <div id='fieldspace'></div>
         <button type="button" class="button" id="button4">zoeken in blog</button>
@@ -62,6 +62,9 @@
     <div class="fakeimgsmall"><img src="/storage/cover_images/arckanum-logo.jpg" width="170" alt="image" /></div>
     <div class="fakeimgsmall"><img src="/storage/cover_images/slayer-logo.png" width="170" alt="image" /></div>
     <div class="fakeimgsmall"><img src="/storage/cover_images/ent-logo.jpg" width="170" alt="image" /></div>
+    <div class="fakeimgsmall"><img src="/storage/cover_images/Melvinslogo.png" width="170" alt="image" /></div>
+    <div class="fakeimgsmall"><img src="/storage/cover_images/grave-logo.png" width="170" alt="image" /></div>
+    <div class="fakeimgsmall"><img src="/storage/cover_images/Rammstein-logo.png" width="170" alt="image" /></div>
 </div>
 
 <div class="card">

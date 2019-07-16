@@ -759,3 +759,12 @@ auth()->logout();
 Auth::user()->name
 @if (Auth::check())
 $post->user_id = auth()->user()->id; //=auth()->id()
+
+Route::get('/table/{number?}', function ($number = 2) {
+   for($i =1; $i <= 10 ; $i++){
+       echo "$i * $number = ". $i* $number ."<br>";
+   }   
+})->where('number', '[0-9]+')->name('table'); //named routes
+
+$url = route('table');
+return redirect()->route('table');

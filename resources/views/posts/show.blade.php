@@ -28,7 +28,7 @@
     @foreach($post->comments as $comment)
         <?php $count++; ?>
         <div class="subcard">
-            <p><h5 class="h5-left-comment">{{ $comment->post->user->name }} says</h5>
+            <p><h5 class="h5-left-comment">{{ $comment->user->name }} says</h5>
             <h5 class="h5-right-comment">{{ $comment->created_at->format('d-m-Y H:i:s') }}</h5></p>
             <h3 style="color:darkred">{{ $comment->title }}</h3>
             <div class="comm">{!! $comment->body !!}</div><span class="right"><a href="#" class="x">x</a></span>
@@ -57,9 +57,9 @@
             <div id="react" class="react">
                 <br />&#8658;&nbsp;&nbsp;Je moet ingelogd zijn om te reageren.<br />
                 <ul>
-                  <li><a href="">inloggen</a></li>
-                  <li><a href="">registreer mij!</a></li>
-                  <li><a href="">nieuw wachtwoord</a></li>
+                  <li><a href="{{ url('/login') }}">inloggen</a></li>
+                  <li><a href="{{ route('register') }}">registreer mij!</a></li>
+                  <li><a href="{{ route('password.request') }}">nieuw wachtwoord</a></li>
                 </ul>
             </div>
         @endif
