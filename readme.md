@@ -1,7 +1,5 @@
-<p align="center">https://lieuwe-jelle.com</p>
-<p align="center">https://lieuwe-jelle.com/users</p>
 <p align="center">https://lieuwe-jelle.com/posts</p>
-<p align="center">Jaep: Inloggen met email-address en pw:bedrijfsnaam, aan elkaar, kleine letters!</p>
+<p align="center"></p>
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
